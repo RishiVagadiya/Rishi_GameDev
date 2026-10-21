@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07090e" />
+    <meta name="description" content="Rishi Vagadiya — Senior Unity Game Developer & Applied AI Engineer. Creator of published Google Play games (CrowdWar, Car Parking) and trainer of the Nexus AI neural model." />
+    <meta property="og:title" content="Rishi Vagadiya | Senior Unity Game Developer & Applied AI Engineer" />
+    <meta property="og:description" content="Explore published Google Play games, custom trained deep learning models, and talk directly with Nexus AI in real-time." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <title>Rishi Vagadiya | Senior Unity Game Developer &amp; Applied AI Engineer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Three.js from Cloudflare CDN for 3D Background (with 2D canvas fallback) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="nexus-config.js"></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- 3D Cinematic WebGL Background Canvas (Zero Neon, Studio Lighting) -->
+    <canvas id="webgl-bg-canvas" aria-hidden="true"></canvas>
+    <div class="studio-atmosphere" aria-hidden="true"></div>
+
+    <div class="site-content">
+      <!-- =====================================================================
+           STUDIO HUD TOP NAVIGATION BAR
+           ===================================================================== -->
+      <header class="hud-header">
+        <div class="container hud-header-inner">
+          <a class="brand-hud" href="#home" aria-label="Rishi Vagadiya Home">
+            <div class="brand-icon-wrap" aria-hidden="true">
+              <span class="brand-icon-rv">RV<span>.</span></span>
+            </div>
+            <div class="brand-text-wrap">
+              <span class="brand-title">RISHI VAGADIYA</span>
+              <span class="brand-sub">UNITY 3D &bull; AI ENGINEER</span>
+            </div>
+          </a>
+
+          <nav class="hud-nav-links" id="hud-nav-links" aria-label="Main Navigation">
+            <a href="#games">// 01 GAMES</a>
+            <a href="#nexus-ai">// 02 AI LAB</a>
+            <a href="#loss-reports">// 03 METRICS</a>
+            <a href="#live-chat">// 04 CHAT WITH AI</a>
+            <a href="#tech-stack">// 05 STACK</a>
+            <a href="#contact">// 06 CONTACT</a>
+          </nav>
+
+          <div class="hud-controls">
+            <button class="hud-pill-btn btn-recruiter-fasttrack" type="button" data-open-dossier aria-label="Open Recruiter Dossier">
+              <span>⚡ RECRUITER HUD</span>
+            </button>
+            <button class="icon-btn" id="btn-toggle-audio" type="button" title="Toggle Studio Audio Effects" aria-label="Toggle Sound Effects">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14" />
+              </svg>
+            </button>
+            <button class="icon-btn mobile-menu-toggle" id="mobile-menu-toggle" type="button" aria-label="Open Mobile Menu">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main id="home">
+        <!-- ===================================================================
+             HERO SECTION: CINEMATIC GAME ENGINE + NEURAL CORE
+             =================================================================== -->
+        <section class="hero-section">
+          <div class="container hero-grid">
+            <div class="hero-info-column">
+              <div class="hero-badge-row">
+                <div class="status-beacon">
+                  <span class="beacon-dot"></span>
+                  <span>AVAILABLE FOR HIRE &bull; IMMEDIATE JOINER</span>
+                </div>
+                <span class="sub-tag-hero">UNITY ENGINE &bull; LLM FINE-TUNING</span>
+              </div>
+
+              <h1 class="hero-title">
+                CRAFTING 3D GAMES.<br />
+                <span class="gradient-text">TRAINING DEEP AI.</span>
+              </h1>
+
+              <p class="hero-description">
+                I am <strong>Rishi Vagadiya</strong>, a Senior Unity 3D Developer and Applied AI Engineer. I have shipped <strong>2 published mobile games live on Google Play</strong>, engineered high-density crowd &amp; vehicle kinematics physics, and fine-tuned <strong>Nexus AI</strong> (LLaMA-3.2-1B-Instruct) with <strong>-72.1% loss reduction</strong>.
+              </p>
+
+              <div class="hero-cta-group">
+                <a class="cyber-btn cyber-btn-primary" href="#games">
+                  <span>🎮 PLAY LIVE GAMES</span>
+                </a>
+                <a class="cyber-btn cyber-btn-secondary" href="#live-chat">
+                  <span>💬 TALK WITH MY AI</span>
+                </a>
+                <button class="cyber-btn cyber-btn-outline" type="button" data-open-dossier>
+                  <span>⚡ RECRUITER DOSSIER</span>
+                </button>
+              </div>
+
+              <div class="hero-stats-row">
+                <div class="hero-stat-card">
+                  <span class="hero-stat-number">02<span>LIVE</span></span>
+                  <span class="hero-stat-label">Play Store Games</span>
+                </div>
+                <div class="hero-stat-card">
+                  <span class="hero-stat-number">1B+<span>PARAM</span></span>
+                  <span class="hero-stat-label">Trained Neural Model</span>
+                </div>
+                <div class="hero-stat-card">
+                  <span class="hero-stat-number">-72%<span>LOSS</span></span>
+                  <span class="hero-stat-label">LoRA Convergence</span>
+                </div>
+                <div class="hero-stat-card">
+                  <span class="hero-stat-number">60<span>FPS</span></span>
+                  <span class="hero-stat-label">Mobile Draw Lock</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hero Visual Showcase Card (Clean layout without overlapping protruding tags) -->
+            <div class="hero-visual-card-wrap">
+              <div class="holo-card">
+                <div class="holo-card-topbar">
+                  <span class="holo-badge-live"><i></i> CROWDWAR &bull; 100% LIVE ON GOOGLE PLAY</span>
+                  <span>SYSTEM: 60 FPS OPTIMAL</span>
+                </div>
+                <div class="holo-image-frame" data-lightbox-src="assets/crowdwar-skyway-sprint.png" data-lightbox-caption="CrowdWar: Crowd Runner 3D — Skyway Sprint Obstacle Gameplay">
+                  <img src="assets/crowdwar-skyway-sprint.png" alt="CrowdWar: Crowd Runner 3D gameplay preview" fetchpriority="high" />
+                  <div class="holo-hud-overlay">
+                    <div>
+                      <div class="holo-hud-title">CrowdWar: Runner 3D</div>
+                      <div class="holo-hud-tags">UNITY 3D &bull; C# &bull; GPU INSTANCING</div>
+                    </div>
+                    <span class="cyber-btn cyber-btn-outline" style="padding: 6px 12px; font-size: 11px;">ENLARGE ↗</span>
+                  </div>
+                </div>
+                <div class="holo-card-footer">
+                  <span>TAP IMAGE TO INSPECT FULL-RES GRAPHICS</span>
+                  <span style="color:var(--accent-blue)">4.8 ★ RATED</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             PUBLISHED UNITY GAMES SHOWCASE (Google Play Store Live Releases)
+             =================================================================== -->
+        <section class="section-padding" id="games">
+          <div class="container">
+            <div class="section-header-block">
+              <span class="section-eyebrow">COMMERCIAL PRODUCTION // PUBLISHED TITLES</span>
+              <h2 class="section-title">Google Play Live Releases</h2>
+              <p class="section-subtitle">
+                Two commercial Unity 3D mobile games built, tested, optimized, and published live on the Google Play Store. Test them on your phone or play the interactive browser demos below!
+              </p>
+            </div>
+
+            <div class="games-showcase-grid">
+              <!-- Game 1: CrowdWar -->
+              <article class="game-card-cyber">
+                <div class="game-card-layout">
+                  <div class="game-media-column">
+                    <div class="game-main-visual" data-lightbox-src="assets/crowdwar-skyway-sprint.png" data-lightbox-caption="CrowdWar: Crowd Runner 3D — Skyway Sprint Course">
+                      <img id="crowdwar-feature-img" src="assets/crowdwar-skyway-sprint.png" alt="CrowdWar: Crowd Runner 3D gameplay screenshot" loading="lazy" />
+                    </div>
+
+                    <div class="game-gallery-thumbnails">
+                      <button class="gallery-thumb-btn is-active" type="button" data-target-image="crowdwar-feature-img" data-src="assets/crowdwar-skyway-sprint.png">
+                        <img src="assets/crowdwar-skyway-sprint.png" alt="CrowdWar Skyway Sprint" />
+                      </button>
+                      <button class="gallery-thumb-btn" type="button" data-target-image="crowdwar-feature-img" data-src="assets/crowdwar-destroy-castle.png">
+                        <img src="assets/crowdwar-destroy-castle.png" alt="CrowdWar Destroy Castle" />
+                      </button>
+                      <button class="gallery-thumb-btn" type="button" data-target-image="crowdwar-feature-img" data-src="assets/crowdwar-climb-to-the-top.png">
+                        <img src="assets/crowdwar-climb-to-the-top.png" alt="CrowdWar Climb to the Top" />
+                      </button>
+                      <button class="gallery-thumb-btn" type="button" data-target-image="crowdwar-feature-img" data-src="assets/crowdwar-multiply-your-clones.png">
+                        <img src="assets/crowdwar-multiply-your-clones.png" alt="CrowdWar Multiply Clones" />
+                      </button>
+                    </div>
+
+                    <!-- Interactive Playable Mini-Runner Demo -->
+                    <div class="interactive-playable-panel">
+                      <div class="playable-header">
+                        <span class="playable-title">
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3" />
+                          </svg>
+                          PLAYABLE RUNNER DEMO (IN-BROWSER)
+                        </span>
+                        <span class="playable-controls-hint">DRAG / TOUCH TO MOVE</span>
+                      </div>
+                      <canvas class="mini-game-canvas" id="crowdwar-canvas"></canvas>
+                    </div>
+                  </div>
+
+                  <div class="game-info-column">
+                    <div class="game-badge-header">
+                      <span class="playstore-live-pill">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                          <circle cx="12" cy="12" r="10" />
+                        </svg>
+                        LIVE ON GOOGLE PLAY
+                      </span>
+                      <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">PACKAGE: com.Zoozo.CrowdWar</span>
+                    </div>
+
+                    <h3 class="game-title">CrowdWar: Crowd Runner 3D</h3>
+                    <p class="game-tagline">
+                      A fast-paced 3D hyper-casual crowd multiplier runner. Control swarms of runner clones, navigate arithmetic multiplier gates, dodge lethal mechanical obstacles, and defeat final castle bosses.
+                    </p>
+
+                    <div class="arch-highlights-block">
+                      <div class="arch-header">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg>
+                        TECHNICAL ARCHITECTURE &amp; OPTIMIZATION
+                      </div>
+                      <ul class="arch-list">
+                        <li>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+                          <span><strong>150+ Dynamic Clones:</strong> Handled with zero GC hitching using pre-allocated Generic Object Pools and GPU Mesh Instancing.</span>
+                        </li>
+                        <li>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+                          <span><strong>Arithmetic Gates Collision:</strong> Spatial partitioning algorithm computing instant crowd replication without frame drops.</span>
+                        </li>
+                        <li>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+                          <span><strong>Mobile Profiling:</strong> Strict budget maintaining locked 60 FPS on low-to-mid range Android devices with under 35 draw calls.</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="game-card-actions">
+                      <a class="btn-playstore-direct" href="https://play.google.com/store/apps/details?id=com.Zoozo.CrowdWar" target="_blank" rel="noopener noreferrer">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M3.6 1.8L16.2 12 3.6 22.2c-.4.3-.9.1-1.1-.3-.1-.2-.2-.5-.2-.7V2.8c0-.5.4-.9.9-1 .2 0 .5.1.7.3l.2.2zM17.4 13l2.8-2.3c.5-.4.6-1.1.2-1.6-.1-.1-.2-.2-.2-.2l-2.8-2.3-3.4 3.4 3.4 3z"/>
+                        </svg>
+                        <span>GET ON GOOGLE PLAY ↗</span>
+                      </a>
+                      <button class="btn-qr-modal" type="button" data-open-qr="crowdwar">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="3" width="7" height="7"/>
+                          <rect x="14" y="3" width="7" height="7"/>
+                          <rect x="14" y="14" width="7" height="7"/>
+                          <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                        <span>SCAN PHONE QR</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Game 2: Car Parking -->
+              <article class="game-card-cyber">
+                <div class="game-card-layout">
+                  <div class="game-media-column">
+                    <div class="game-main-visual" data-lightbox-src="assets/car-parking-cruise-road.png" data-lightbox-caption="Car Parking: Real Drive 3D — Mountain Cruise Road">
+                      <img id="carparking-feature-img" src="assets/car-parking-cruise-road.png" alt="Car Parking: Real Drive 3D gameplay screenshot" loading="lazy" />
+                    </div>
+
+                    <div class="game-gallery-thumbnails">
+                      <button class="gallery-thumb-btn is-active" type="button" data-target-image="carparking-feature-img" data-src="assets/car-parking-cruise-road.png">
+                        <img src="assets/car-parking-cruise-road.png" alt="Cruise Road" />
+                      </button>
+                      <button class="gallery-thumb-btn" type="button" data-target-image="carparking-feature-img" data-src="assets/car-parking-cockpit.png">
+                        <img src="assets/car-parking-cockpit.png" alt="Cockpit View" />
+                      </button>
+                      <button class="gallery-thumb-btn" type="button" data-target-image="carparking-feature-img" data-src="assets/car-parking-level-5.png">
+                        <img src="assets/car-parking-level-5.png" alt="Level 5 Parking" />
+                      </button>
+                      <button class="gallery-thumb-btn" type="button" data-target-image="carparking-feature-img" data-src="assets/car-parking-vehicle-select.png">
+                        <img src="assets/car-parking-vehicle-select.png" alt="Vehicle Select" />
+                      </button>
+                    </div>
+
+                    <!-- Interactive Playable Car Parking Simulator -->
+                    <div class="interactive-playable-panel">
+                      <div class="playable-header">
+                        <span class="playable-title">
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3" />
+                          </svg>
+                          PLAYABLE 3D VEHICLE STEERING (IN-BROWSER)
+                        </span>
+                        <span class="playable-controls-hint">USE WASD / ARROW KEYS</span>
+                      </div>
+                      <canvas class="mini-game-canvas" id="carparking-canvas"></canvas>
+                    </div>
+                  </div>
+
+                  <div class="game-info-column">
+                    <div class="game-badge-header">
+                      <span class="playstore-live-pill">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                          <circle cx="12" cy="12" r="10" />
+                        </svg>
+                        LIVE ON GOOGLE PLAY
+                      </span>
+                      <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">PACKAGE: com.Zylos.CarParking</span>
+                    </div>
+
+                    <h3 class="game-title">Car Parking: Real Drive 3D</h3>
+                    <p class="game-tagline">
+                      High-fidelity mobile vehicle simulation. Features realistic suspension dynamics, Ackermann steering geometry, interior cockpit cameras, customizable vehicles, and precision obstacle courses.
+                    </p>
+
+                    <div class="arch-highlights-block">
+                      <div class="arch-header">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg>
+                        TECHNICAL ARCHITECTURE &amp; SIMULATION
+                      </div>
+                      <ul class="arch-list">
+                        <li>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+                          <span><strong>WheelCollider Kinematics:</strong> Configured realistic spring, damper, forward/sideways friction slip curves, and Ackermann steering geometry.</span>
+                        </li>
+                        <li>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+                          <span><strong>Multi-Camera Rig:</strong> Seamless switching between 3rd-person orbital chase camera and immersive 1st-person interior cockpit view.</span>
+                        </li>
+                        <li>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+                          <span><strong>Precision Collision Zones:</strong> Mesh trigger boundaries with distance-vector calculations for exact parking alignment scoring.</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="game-card-actions">
+                      <a class="btn-playstore-direct" href="https://play.google.com/store/apps/details?id=com.Zylos.CarParking" target="_blank" rel="noopener noreferrer">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M3.6 1.8L16.2 12 3.6 22.2c-.4.3-.9.1-1.1-.3-.1-.2-.2-.5-.2-.7V2.8c0-.5.4-.9.9-1 .2 0 .5.1.7.3l.2.2zM17.4 13l2.8-2.3c.5-.4.6-1.1.2-1.6-.1-.1-.2-.2-.2-.2l-2.8-2.3-3.4 3.4 3.4 3z"/>
+                        </svg>
+                        <span>GET ON GOOGLE PLAY ↗</span>
+                      </a>
+                      <button class="btn-qr-modal" type="button" data-open-qr="carparking">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="3" width="7" height="7"/>
+                          <rect x="14" y="3" width="7" height="7"/>
+                          <rect x="14" y="14" width="7" height="7"/>
+                          <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                        <span>SCAN PHONE QR</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             NEXUS AI: DEEP LEARNING LAB & TRAINING LOSS REPORTS
+             =================================================================== -->
+        <section class="section-padding" id="nexus-ai">
+          <div class="container">
+            <div class="section-header-block" id="loss-reports">
+              <span class="section-eyebrow">APPLIED AI ENGINEERING // NEURAL MODEL BUILDER</span>
+              <h2 class="section-title">Nexus AI: Custom Fine-Tuned Model</h2>
+              <p class="section-subtitle">
+                Beyond game development, I specialize in fine-tuning deep learning language models. Below is the verified training architecture, loss descent convergence, and domain evaluation reports for <strong>Nexus AI</strong> (LLaMA-3.2-1B-Instruct).
+              </p>
+            </div>
+
+            <div class="nexus-lab-grid">
+              <!-- Left Dashboard Column: Real Metrics & Loss Graph -->
+              <div class="nexus-metrics-dashboard">
+                <div class="lab-kicker-bar">
+                  <span class="lab-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="3"/>
+                      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    </svg>
+                    LoRA / PEFT + UNSLOTH CLUSTER
+                  </span>
+                  <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-emerald)">CONVERGENCE: 100% COMPLETE</span>
+                </div>
+
+                <!-- Side by Side Summary Cards -->
+                <div class="nexus-stats-pair">
+                  <div class="stat-box-cyber loss-box">
+                    <div class="stat-box-title">TOTAL TRAINING LOSS</div>
+                    <div class="stat-box-big-val loss-val">-72.1%</div>
+                    <div class="stat-box-details">
+                      <span>Initial Loss: <strong>1.4820</strong></span>
+                      <span>Final Loss: <strong style="color:var(--accent-emerald)">0.4140</strong></span>
+                      <span>Status: Optimal Convergence Reached</span>
+                    </div>
+                  </div>
+
+                  <div class="stat-box-cyber success-box">
+                    <div class="stat-box-title">KNOWLEDGE MASTERY SCORE</div>
+                    <div class="stat-box-big-val success-val">94.8%</div>
+                    <div class="stat-box-details">
+                      <span>Baseline Score: <strong>62.4%</strong></span>
+                      <span>Knowledge Gain: <strong style="color:var(--accent-blue)">+32.4%</strong></span>
+                      <span>Status: 100% Target Acquired</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Interactive SVG Animated Loss Curve Graph -->
+                <div class="visual-loss-card">
+                  <div class="loss-chart-header">
+                    <span class="loss-chart-title">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10" />
+                        <line x1="12" y1="20" x2="12" y2="4" />
+                        <line x1="6" y1="20" x2="6" y2="14" />
+                      </svg>
+                      LOSS DESCENT &amp; KNOWLEDGE ACQUISITION CURVE
+                    </span>
+                    <div class="loss-chart-legend">
+                      <span class="legend-loss">&bull; Training Loss</span>
+                      <span class="legend-knowledge">&bull; Knowledge %</span>
+                    </div>
+                  </div>
+                  <div class="loss-svg-chart" id="loss-svg-chart"></div>
+                </div>
+
+                <!-- Benchmark Accuracy Comparison Matrix -->
+                <div class="benchmark-table-wrap">
+                  <table class="benchmark-table" aria-label="Evaluation Benchmark Results">
+                    <thead>
+                      <tr>
+                        <th>Domain / Benchmark</th>
+                        <th>Base Llama-3.2</th>
+                        <th>Trained Nexus AI</th>
+                        <th>Improvement</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Game Physics &amp; Vehicle Dynamics</strong></td>
+                        <td style="color:var(--text-muted)">54.0%</td>
+                        <td style="color:var(--accent-emerald); font-weight:700;">98.7%</td>
+                        <td><span class="benchmark-gain">+44.7%</span> <span class="benchmark-tag-expert">Expert</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>C# Architecture &amp; SOLID Design</strong></td>
+                        <td style="color:var(--text-muted)">68.5%</td>
+                        <td style="color:var(--accent-emerald); font-weight:700;">99.1%</td>
+                        <td><span class="benchmark-gain">+30.6%</span> <span class="benchmark-tag-expert">Expert</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Mobile Draw-Calls &amp; GPU Batching</strong></td>
+                        <td style="color:var(--text-muted)">61.0%</td>
+                        <td style="color:var(--accent-emerald); font-weight:700;">97.4%</td>
+                        <td><span class="benchmark-gain">+36.4%</span> <span class="benchmark-tag-expert">Expert</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Multi-Step Reasoning &amp; Logic (GSM8K)</strong></td>
+                        <td style="color:var(--text-muted)">65.2%</td>
+                        <td style="color:var(--accent-emerald); font-weight:700;">79.4%</td>
+                        <td><span class="benchmark-gain">+14.2%</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Instruction Following Accuracy (IFEval)</strong></td>
+                        <td style="color:var(--text-muted)">72.4%</td>
+                        <td style="color:var(--accent-emerald); font-weight:700;">89.8%</td>
+                        <td><span class="benchmark-gain">+17.4%</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Report Screenshots & Downloadable Assets -->
+                <div class="report-images-showcase">
+                  <div class="report-image-card" data-lightbox-src="assets/nexus-ai-training-report.png" data-lightbox-caption="Nexus AI Official Training Loss &amp; Success Report (Generated from Run Logs)">
+                    <img src="assets/nexus-ai-training-report.png" alt="Nexus AI Training Loss Report" loading="lazy" />
+                    <div class="report-card-overlay">
+                      <div class="report-card-label">
+                        <span>01 / TRAINING REPORT</span>
+                        <span style="color:var(--accent-blue)">INSPECT ↗</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="report-image-card" data-lightbox-src="assets/nexus-ai-evaluation-report.png" data-lightbox-caption="Nexus AI Benchmark Evaluation Report (Accuracy Matrix vs Base Model)">
+                    <img src="assets/nexus-ai-evaluation-report.png" alt="Nexus AI Evaluation Report" loading="lazy" />
+                    <div class="report-card-overlay">
+                      <div class="report-card-label">
+                        <span>02 / EVALUATION REPORT</span>
+                        <span style="color:var(--accent-blue)">INSPECT ↗</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="download-pill-row">
+                  <a class="hud-pill-btn" href="files/nexus-ai-training-notebook.ipynb" download>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                      <polyline points="7 10 12 15 17 10"/>
+                      <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    <span>TRAINING NOTEBOOK (.IPYNB)</span>
+                  </a>
+                  <a class="hud-pill-btn" href="files/nexus-ai-dataset.jsonl" download>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                      <polyline points="7 10 12 15 17 10"/>
+                      <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    <span>INSTRUCTION DATASET (.JSONL)</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- ===============================================================
+                   RIGHT COLUMN: LIVE RECRUITER AI CHAT ENGINE
+                   =============================================================== -->
+              <div class="nexus-chat-terminal" id="live-chat">
+                <div class="chat-terminal-topbar">
+                  <div class="chat-terminal-title">
+                    <div class="chat-ai-avatar">NX</div>
+                    <div class="chat-title-info">
+                      <span class="chat-title-name">NEXUS AI CONSOLE</span>
+                      <span class="chat-title-status">
+                        <span></span> LIVE NEURAL INFERENCE (ACTIVE)
+                      </span>
+                    </div>
+                  </div>
+                  <div class="chat-top-actions">
+                    <button class="icon-btn" id="btn-toggle-tts" type="button" title="Toggle AI Voice Readout (TTS)">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                      </svg>
+                    </button>
+                    <button class="icon-btn" id="btn-clear-chat" type="button" title="Clear Chat History">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6" />
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Chat Transcript Pane -->
+                <div class="chat-transcript-pane" id="chat-transcript" role="log" aria-live="polite">
+                  <div class="chat-message-row from-ai">
+                    <div class="chat-avatar-small">NX</div>
+                    <div class="chat-bubble-content">
+                      <h4>Hello! I am Nexus AI.</h4>
+                      <p>I am Rishi Vagadiya’s custom trained neural model. Recruiters and studios can ask me anything directly about Rishi’s Unity games (<em>CrowdWar</em>, <em>Car Parking</em>), his LoRA fine-tuning workflow, C# architecture, or why you should hire him!</p>
+                      <p style="margin-top: 8px; font-size: 12px; color: var(--accent-blue);">Click any quick prompt below or type your question:</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Recruiter Quick Prompt Chips -->
+                <div class="chat-prompts-chips" aria-label="Recruiter Quick Questions">
+                  <button class="prompt-chip-btn" type="button" data-quick-prompt="Why should our studio hire Rishi as a Unity Developer?">🎯 Why hire Rishi?</button>
+                  <button class="prompt-chip-btn" type="button" data-quick-prompt="How does CrowdWar simulate 150+ crowd agents at 60 FPS?">👥 CrowdWar 60 FPS</button>
+                  <button class="prompt-chip-btn" type="button" data-quick-prompt="Explain Car Parking WheelCollider physics & Ackermann steering">🏎️ Car Parking Physics</button>
+                  <button class="prompt-chip-btn" type="button" data-quick-prompt="Explain your LoRA fine-tuning hyperparameters & loss drop">🧠 LoRA Loss Drop</button>
+                  <button class="prompt-chip-btn" type="button" data-quick-prompt="Show a C# Unity Object Pool script with generics">💻 C# Object Pool Code</button>
+                  <button class="prompt-chip-btn" type="button" data-quick-prompt="What are Rishi's notice period, work modes and contact details?">📬 Notice &amp; Contact</button>
+                </div>
+
+                <!-- Chat Input Form -->
+                <form class="chat-input-bar" id="chat-form">
+                  <input class="chat-input-field" id="chat-input-text" type="text" placeholder="Ask Nexus AI about Rishi's games, code, or AI models…" autocomplete="off" required />
+                  <button class="btn-chat-send" type="submit" aria-label="Send message">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <line x1="22" y1="2" x2="11" y2="13" />
+                      <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                    </svg>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             SKILLS & SYSTEMS ARCHITECTURE MATRIX
+             =================================================================== -->
+        <section class="section-padding" id="tech-stack">
+          <div class="container">
+            <div class="section-header-block">
+              <span class="section-eyebrow">ENGINEERING CAPABILITIES // TECH MATRIX</span>
+              <h2 class="section-title">Production Skill Matrix</h2>
+              <p class="section-subtitle">
+                A proven arsenal across commercial game engines, applied deep learning, mobile optimization, and software design patterns.
+              </p>
+            </div>
+
+            <div class="skills-cards-grid">
+              <!-- Skill Card 1 -->
+              <div class="skill-item-card">
+                <div class="skill-card-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                  </svg>
+                </div>
+                <h3 class="skill-card-name">Unity 3D Engine</h3>
+                <p class="skill-card-desc">
+                  Universal Render Pipeline (URP), physics simulation, scene management, Addressables, prefab workflows, and mobile Android releases.
+                </p>
+                <div class="skill-tag-pills">
+                  <span>Unity 2022/2023 LTS</span>
+                  <span>URP</span>
+                  <span>Physics 3D</span>
+                  <span>Addressables</span>
+                </div>
+              </div>
+
+              <!-- Skill Card 2 -->
+              <div class="skill-item-card">
+                <div class="skill-card-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
+                  </svg>
+                </div>
+                <h3 class="skill-card-name">C# Gameplay Engineering</h3>
+                <p class="skill-card-desc">
+                  Object-oriented design, SOLID principles, ScriptableObject architectures, Generic Object Pools, and zero-allocation gameplay code.
+                </p>
+                <div class="skill-tag-pills">
+                  <span>C# .NET</span>
+                  <span>SOLID</span>
+                  <span>Object Pooling</span>
+                  <span>ScriptableObjects</span>
+                </div>
+              </div>
+
+              <!-- Skill Card 3 -->
+              <div class="skill-item-card">
+                <div class="skill-card-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
+                    <path d="M12 12L2.5 7.5"/>
+                  </svg>
+                </div>
+                <h3 class="skill-card-name">Deep Learning &amp; AI</h3>
+                <p class="skill-card-desc">
+                  LoRA / PEFT fine-tuning, PyTorch, Hugging Face transformers, Unsloth GPU speedups, synthetic dataset augmentation, and NLP inference.
+                </p>
+                <div class="skill-tag-pills">
+                  <span>LLaMA 3.2</span>
+                  <span>LoRA / PEFT</span>
+                  <span>Unsloth</span>
+                  <span>PyTorch</span>
+                </div>
+              </div>
+
+              <!-- Skill Card 4 -->
+              <div class="skill-item-card">
+                <div class="skill-card-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                  </svg>
+                </div>
+                <h3 class="skill-card-name">Mobile Profiling &amp; Draw Calls</h3>
+                <p class="skill-card-desc">
+                  Profiling with Unity Profiler, Memory Profiler, ASTC texture compression, occlusion culling, and locking steady 60 FPS on Android.
+                </p>
+                <div class="skill-tag-pills">
+                  <span>60 FPS Target</span>
+                  <span>ASTC</span>
+                  <span>Occlusion Culling</span>
+                  <span>Batching</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             RECRUITER CONTACT & INQUIRY PORTAL
+             =================================================================== -->
+        <section class="section-padding contact-section-wrap" id="contact">
+          <div class="container">
+            <div class="section-header-block">
+              <span class="section-eyebrow">DIRECT COMMUNICATION // HIRE RISHI</span>
+              <h2 class="section-title">Get In Touch Directly</h2>
+              <p class="section-subtitle">
+                Available immediately for Senior / Mid Unity Game Developer or Applied AI Engineer roles worldwide. Contact me via 1-click WhatsApp, Email, or the inquiry portal below.
+              </p>
+            </div>
+
+            <div class="contact-portal-grid">
+              <div class="contact-quick-info">
+                <h3 style="font-family: var(--font-display); font-size: 22px; color: #fff; margin-bottom: 12px;">Let’s Build Something Legendary</h3>
+                <p style="color: var(--text-muted); line-height: 1.7; font-size: 15px;">
+                  Whether you have an immediate studio vacancy, a game prototyping project, or want to discuss practical LLM integration for games, I respond within a few hours.
+                </p>
+
+                <div class="contact-direct-cards">
+                  <!-- WhatsApp Link -->
+                  <a class="contact-link-tile tile-whatsapp" href="https://wa.me/916352294215?text=Hi%20Rishi,%20I%20reviewed%20your%20Unity%20%2B%20AI%20Portfolio%20and%20would%20like%20to%20connect%20for%20an%20opportunity." target="_blank" rel="noopener noreferrer">
+                    <div class="contact-tile-icon">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.24-.75-.67-1.25-1.49-1.4-1.74-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/>
+                      </svg>
+                    </div>
+                    <div class="contact-tile-content">
+                      <span class="contact-tile-label">1-CLICK WHATSAPP (INSTANT CHAT)</span>
+                      <span class="contact-tile-value">+91 6352294215 ↗</span>
+                    </div>
+                  </a>
+
+                  <!-- Email Link -->
+                  <a class="contact-link-tile tile-email" href="mailto:rishivagadiya@gmail.com?subject=Recruiter%20Inquiry%20for%20Rishi%20Vagadiya">
+                    <div class="contact-tile-icon">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                      </svg>
+                    </div>
+                    <div class="contact-tile-content">
+                      <span class="contact-tile-label">DIRECT INBOX (EMAIL)</span>
+                      <span class="contact-tile-value">rishivagadiya@gmail.com ↗</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Recruiter Inquiry Form -->
+              <div class="recruiter-form-card">
+                <form id="recruiter-inquiry-form">
+                  <div class="form-group-cyber">
+                    <label class="form-label-cyber" for="form-recruiter-name">Recruiter / Studio Lead Name</label>
+                    <input class="form-input-cyber" id="form-recruiter-name" type="text" placeholder="e.g. Alex Mercer" required />
+                  </div>
+
+                  <div class="form-group-cyber">
+                    <label class="form-label-cyber" for="form-recruiter-email">Work Email</label>
+                    <input class="form-input-cyber" id="form-recruiter-email" type="email" placeholder="alex@studio.com" required />
+                  </div>
+
+                  <div class="form-group-cyber">
+                    <label class="form-label-cyber" for="form-company-name">Studio / Company Name</label>
+                    <input class="form-input-cyber" id="form-company-name" type="text" placeholder="e.g. Blizzard / Riot / Indie Studio" />
+                  </div>
+
+                  <div class="form-group-cyber">
+                    <label class="form-label-cyber" for="form-role-select">Target Position</label>
+                    <select class="form-input-cyber" id="form-role-select">
+                      <option value="Senior Unity Game Developer">Senior Unity Game Developer</option>
+                      <option value="Unity 3D Mobile Engineer">Unity 3D Mobile Engineer</option>
+                      <option value="Game Systems & Physics Programmer">Game Systems &amp; Physics Programmer</option>
+                      <option value="Applied AI / ML Engineer">Applied AI / ML Engineer</option>
+                      <option value="Custom Project / Contract Prototype">Custom Project / Contract Prototype</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group-cyber">
+                    <label class="form-label-cyber" for="form-project-details">Role Scope &amp; Next Steps</label>
+                    <textarea class="form-input-cyber" id="form-project-details" rows="3" placeholder="Tell me briefly about your project or role requirements…" required></textarea>
+                  </div>
+
+                  <button class="cyber-btn cyber-btn-primary" style="width: 100%; margin-top: 8px;" type="submit">
+                    <span>TRANSMIT RECRUITER INQUIRY ↗</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- =====================================================================
+           STICKY RECRUITER COMMAND BAR (Appears ONLY when scrolled past Hero)
+           ===================================================================== -->
+      <aside class="recruiter-dock-floating" aria-label="Recruiter Fast-Track Navigation">
+        <button class="dock-item-btn dock-primary" type="button" data-open-dossier>
+          <span>⚡ RECRUITER CV</span>
+        </button>
+        <a class="dock-item-btn" href="#live-chat">
+          <span>💬 AI CHAT</span>
+        </a>
+        <a class="dock-item-btn" href="https://wa.me/916352294215" target="_blank" rel="noopener noreferrer">
+          <span style="color:var(--accent-emerald)">📲 WHATSAPP</span>
+        </a>
+        <button class="dock-item-btn" type="button" data-copy-contact>
+          <span>📋 COPY INFO</span>
+        </button>
+      </aside>
+
+      <!-- =====================================================================
+           FOOTER
+           ===================================================================== -->
+      <footer class="site-footer-cyber">
+        <div class="container footer-inner">
+          <div>
+            <strong style="color:#fff; font-family: var(--font-display);">RISHI VAGADIYA</strong> &bull; Senior Unity Game Developer &amp; Applied AI Engineer
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 11px;">
+            &copy; 2026 RISHI VAGADIYA &bull; ALL RIGHTS RESERVED
+          </div>
+          <div>
+            <a href="#home" style="color: var(--accent-blue);">BACK TO TOP ↑</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- =====================================================================
+         MODAL 1: RECRUITER DOSSIER & ATS-FRIENDLY RESUME PREVIEW
+         (With Dedicated Top Bar to Guarantee Zero Overlap with Close Button)
+         ===================================================================== -->
+    <div class="cyber-modal-backdrop" id="dossier-modal" role="dialog" aria-modal="true" aria-labelledby="dossier-heading">
+      <div class="cyber-modal-box">
+        <!-- Clean Non-Overlapping Top Header -->
+        <div class="modal-top-bar">
+          <div class="modal-title-col">
+            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-blue); letter-spacing: 0.12em; text-transform: uppercase;">CANDIDATE DOSSIER // ATS READY</span>
+            <h2 id="dossier-heading" style="font-family: var(--font-display); font-size: 22px; color: #fff; margin-top: 4px;">Rishi Vagadiya</h2>
+            <p style="color: var(--text-muted); font-size: 13px;">Senior Unity Game Developer &amp; Applied AI Engineer</p>
+          </div>
+          <div class="modal-top-actions">
+            <button class="hud-pill-btn" onclick="window.print()" type="button" style="border-color: var(--border-medium);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 6 2 18 2 18 9" />
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                <rect x="6" y="14" width="12" height="8" />
+              </svg>
+              <span>PRINT / PDF</span>
+            </button>
+            <button class="modal-close-icon-btn" type="button" data-close-modal aria-label="Close Dossier Modal">✕</button>
+          </div>
+        </div>
+
+        <div class="dossier-grid-specs">
+          <div class="dossier-spec-tile">
+            <span>AVAILABILITY</span>
+            <strong style="color:var(--accent-emerald)">Immediate Joiner (0–15 Days)</strong>
+          </div>
+          <div class="dossier-spec-tile">
+            <span>WORK ARRANGEMENT</span>
+            <strong>Remote (Worldwide) / Hybrid / Relocation</strong>
+          </div>
+          <div class="dossier-spec-tile">
+            <span>CORE GAME ENGINE</span>
+            <strong>Unity 2022/2023 LTS, C#, URP, Shaders</strong>
+          </div>
+          <div class="dossier-spec-tile">
+            <span>AI &amp; MACHINE LEARNING</span>
+            <strong>PyTorch, LoRA / PEFT, Unsloth, LLaMA</strong>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <h4 style="font-family: var(--font-hud); font-size: 13px; color: #fff; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Key Accomplishments:</h4>
+          <ul style="color: var(--text-muted); font-size: 13px; line-height: 1.7; padding-left: 20px;">
+            <li><strong>Shipped 2 Live Commercial Mobile Titles on Google Play Store:</strong> <em>CrowdWar: Crowd Runner 3D</em> (150+ crowd GPU instancing) and <em>Car Parking: Real Drive 3D</em> (custom WheelCollider kinematics).</li>
+            <li><strong>Trained &amp; Fine-Tuned Nexus AI Model:</strong> LLaMA-3.2-1B-Instruct fine-tuned using LoRA/PEFT with <strong>-72.1% loss reduction</strong> (1.48 ➔ 0.41) and 94.8% domain knowledge mastery.</li>
+            <li><strong>Zero Allocation Mobile Gameplay:</strong> Engineered generic object pooling, optimized draw calls under 35, and locked 60 FPS on Android.</li>
+          </ul>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 24px;">
+          <a class="cyber-btn cyber-btn-primary" style="flex: 1;" href="mailto:rishivagadiya@gmail.com?subject=Interview%20Invitation%20for%20Rishi%20Vagadiya">
+            <span>SCHEDULE QUICK SCREEN ↗</span>
+          </a>
+          <button class="cyber-btn cyber-btn-outline" type="button" data-copy-contact>
+            <span>COPY CONTACT INFO</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         MODAL 2: PLAY STORE PHONE SCANNABLE QR CODE MODAL
+         ===================================================================== -->
+    <div class="cyber-modal-backdrop" id="qr-modal" role="dialog" aria-modal="true" aria-labelledby="qr-heading">
+      <div class="cyber-modal-box" style="text-align: center;">
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 4px;">
+          <button class="modal-close-icon-btn" type="button" data-close-modal aria-label="Close QR Modal">✕</button>
+        </div>
+
+        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-blue);">SCAN WITH MOBILE CAMERA</span>
+        <h3 id="qr-game-title" style="font-family: var(--font-display); font-size: 19px; color: #fff; margin: 8px 0 16px;">Game Title</h3>
+
+        <div class="qr-container">
+          <div class="qr-code-frame" id="qr-code-svg-slot">
+            <!-- Scannable SVG QR Code generated dynamically via JavaScript -->
+          </div>
+          <p style="color: var(--text-muted); font-size: 13px; max-width: 380px;">
+            Point your Android phone camera at the screen to open the live Google Play Store listing immediately.
+          </p>
+        </div>
+
+        <div style="margin-top: 14px;">
+          <a class="cyber-btn cyber-btn-primary" id="qr-direct-link" href="#" target="_blank" rel="noopener noreferrer">
+            <span>OPEN DIRECT GOOGLE PLAY LINK ↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         MODAL 3: FULL-RESOLUTION SCREENSHOT & REPORT LIGHTBOX
+         ===================================================================== -->
+    <div class="cyber-modal-backdrop" id="lightbox-modal" role="dialog" aria-modal="true" aria-label="Screenshot Lightbox Viewer">
+      <div class="cyber-modal-box">
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 8px;">
+          <button class="modal-close-icon-btn" type="button" data-close-modal aria-label="Close Lightbox">✕</button>
+        </div>
+        <img id="lightbox-image" src="" alt="Enlarged screenshot preview" />
+        <p id="lightbox-caption" style="margin-top: 12px; font-family: var(--font-hud); font-size: 13px; color: var(--accent-blue); text-align: center;"></p>
+      </div>
+    </div>
+
+    <!-- Toast Notification Element -->
+    <div class="toast-notification" id="cyber-toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
