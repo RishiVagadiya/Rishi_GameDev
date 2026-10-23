@@ -1,933 +1,690 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#07090e" />
-    <meta name="description" content="Rishi Vagadiya — Senior Unity Game Developer & Applied AI Engineer. Creator of published Google Play games (CrowdWar, Car Parking) and trainer of the Nexus AI neural model." />
-    <meta property="og:title" content="Rishi Vagadiya | Senior Unity Game Developer & Applied AI Engineer" />
-    <meta property="og:description" content="Explore published Google Play games, custom trained deep learning models, and talk directly with Nexus AI in real-time." />
+    <title>Rishi, explained | Rishi Vagadiya · Senior Unity Developer & Applied AI Engineer</title>
+    <meta name="description" content="The portfolio as a Vox-style explainer: 2 published Google Play games, 150+ GPU crowd instancing, and custom neural LLM fine-tuning, on paper." />
+    
+    <!-- Open Graph & Social Meta -->
+    <meta property="og:title" content="Rishi, explained | Senior Unity Game Developer & Applied AI Engineer" />
+    <meta property="og:description" content="The portfolio as a Vox-style explainer: the games, the numbers, the physics and the neural models, on paper." />
     <meta property="og:type" content="website" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <title>Rishi Vagadiya | Senior Unity Game Developer &amp; Applied AI Engineer</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="styles.css" />
+    <!-- Preload Critical Vox Assets -->
+    <link rel="preload" as="image" href="vox/rishi.webp" />
+    <link rel="preload" as="image" href="vox/paper.webp" />
+    <link rel="preload" as="image" href="vox/highlighter.webp" />
+    <link rel="preload" as="image" href="vox/tape-1.webp" />
+    <link rel="preload" as="image" href="vox/tape-2.webp" />
+    <link rel="preload" as="image" href="vox/tape-3.webp" />
+    <link rel="preload" as="image" href="vox/pin.webp" />
+    <link rel="preload" as="image" href="vox/map.webp" />
 
-    <!-- Three.js from Cloudflare CDN for 3D Background (with 2D canvas fallback) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="nexus-config.js"></script>
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="vox.css" />
+    <script>document.documentElement.classList.add('js');</script>
+    <script src="vox.js" defer></script>
   </head>
   <body>
-    <!-- 3D Cinematic WebGL Background Canvas (Zero Neon, Studio Lighting) -->
-    <canvas id="webgl-bg-canvas" aria-hidden="true"></canvas>
-    <div class="studio-atmosphere" aria-hidden="true"></div>
+    <!-- =====================================================================
+         VOX TOP NAVIGATION BAR
+         ===================================================================== -->
+    <header class="vox-nav" role="banner">
+      <div class="vox-nav-left">
+        <a class="vox-brand" href="#top" aria-label="Rishi Vagadiya Home">
+          Rishi<span>.</span>
+        </a>
+        <nav class="vox-nav-links" aria-label="Explainer Chapters">
+          <a href="#beat-numbers">// 01 The Numbers</a>
+          <a href="#beat-games">// 02 Games</a>
+          <a href="#beat-nexus">// 03 Nexus AI</a>
+          <a href="#beat-lab">// 04 Lab</a>
+          <a href="#beat-end">// 05 Three Worlds</a>
+        </nav>
+      </div>
 
-    <div class="site-content">
-      <!-- =====================================================================
-           STUDIO HUD TOP NAVIGATION BAR
-           ===================================================================== -->
-      <header class="hud-header">
-        <div class="container hud-header-inner">
-          <a class="brand-hud" href="#home" aria-label="Rishi Vagadiya Home">
-            <div class="brand-icon-wrap" aria-hidden="true">
-              <span class="brand-icon-rv">RV<span>.</span></span>
-            </div>
-            <div class="brand-text-wrap">
-              <span class="brand-title">RISHI VAGADIYA</span>
-              <span class="brand-sub">UNITY 3D &bull; AI ENGINEER</span>
-            </div>
-          </a>
-
-          <nav class="hud-nav-links" id="hud-nav-links" aria-label="Main Navigation">
-            <a href="#games">// 01 GAMES</a>
-            <a href="#nexus-ai">// 02 AI LAB</a>
-            <a href="#loss-reports">// 03 METRICS</a>
-            <a href="#live-chat">// 04 CHAT WITH AI</a>
-            <a href="#tech-stack">// 05 STACK</a>
-            <a href="#contact">// 06 CONTACT</a>
-          </nav>
-
-          <div class="hud-controls">
-            <button class="hud-pill-btn btn-recruiter-fasttrack" type="button" data-open-dossier aria-label="Open Recruiter Dossier">
-              <span>⚡ RECRUITER HUD</span>
-            </button>
-            <button class="icon-btn" id="btn-toggle-audio" type="button" title="Toggle Studio Audio Effects" aria-label="Toggle Sound Effects">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                <path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14" />
-              </svg>
-            </button>
-            <button class="icon-btn mobile-menu-toggle" id="mobile-menu-toggle" type="button" aria-label="Open Mobile Menu">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-              </svg>
-            </button>
-          </div>
+      <div class="vox-nav-right">
+        <div class="vox-mode-badge" title="Live Vox Explainer View">
+          <span class="dot" aria-hidden="true"></span>
+          <span>EXPLAINER VIEW</span>
         </div>
-      </header>
+        <a class="vox-btn-action vox-btn-secondary" href="index-cyber3d.html" title="Switch to 3D Cyber HUD Portfolio">
+          <span>3D CYBER VIEW ↗</span>
+        </a>
+        <button class="vox-btn-action" type="button" data-open-dossier aria-label="Open Recruiter Dossier">
+          <span>⚡ RECRUITER HUD</span>
+        </button>
+        <button class="vox-btn-action vox-btn-secondary" type="button" data-open-chat aria-label="Talk to Nexus AI">
+          <span>💬 TALK TO AI</span>
+        </button>
+      </div>
+    </header>
 
-      <main id="home">
-        <!-- ===================================================================
-             HERO SECTION: CINEMATIC GAME ENGINE + NEURAL CORE
-             =================================================================== -->
-        <section class="hero-section">
-          <div class="container hero-grid">
-            <div class="hero-info-column">
-              <div class="hero-badge-row">
-                <div class="status-beacon">
-                  <span class="beacon-dot"></span>
-                  <span>AVAILABLE FOR HIRE &bull; IMMEDIATE JOINER</span>
-                </div>
-                <span class="sub-tag-hero">UNITY ENGINE &bull; LLM FINE-TUNING</span>
-              </div>
+    <main class="vox-wrapper" id="top">
+      <!-- SVG Turbulence and Displacement Map Filter for Hand-Drawn Ink Boil -->
+      <svg class="vox-defs" aria-hidden="true">
+        <filter id="vox-boil">
+          <feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="0"></feTurbulence>
+          <feDisplacementMap in="SourceGraphic" scale="4"></feDisplacementMap>
+        </filter>
+      </svg>
 
-              <h1 class="hero-title">
-                CRAFTING 3D GAMES.<br />
-                <span class="gradient-text">TRAINING DEEP AI.</span>
+      <!-- =====================================================================
+           BEAT 00: OPENING TITLE CARD (EXPLAINED)
+           ===================================================================== -->
+      <section class="beat" data-beat="" style="--len: 1.6;">
+        <div class="stage">
+          <div class="camera" data-cam="[[0, 0, 0, 1, 0], [1, 0, -4, 1.18, -1.5]]">
+            <!-- Torn paper strips in Tech Blue, Studio Red & Amber -->
+            <div class="open-strips" aria-hidden="true">
+              <i class="torn-strip" style="--c: var(--color-tech); --r: -3deg;"></i>
+              <i class="torn-strip" style="--c: var(--color-studio); --r: 2deg;"></i>
+              <i class="torn-strip" style="--c: var(--color-learn); --r: -1deg;"></i>
+            </div>
+
+            <!-- Main Title & Dek -->
+            <div class="open-wrap">
+              <p class="chyron open-pop" style="--d: 0.1s;">Explained</p>
+              <h1 class="open-title">
+                <span class="open-pop" style="--d: 0.2s;">How a Unity game dev</span><br />
+                <span class="open-pop" style="--d: 0.35s;">ended up training</span>
+                <span class="open-pop hl-open" style="--d: 0.5s;">deep neural LLMs</span>
               </h1>
-
-              <p class="hero-description">
-                I am <strong>Rishi Vagadiya</strong>, a Senior Unity 3D Developer and Applied AI Engineer. I have shipped <strong>2 published mobile games live on Google Play</strong>, engineered high-density crowd &amp; vehicle kinematics physics, and fine-tuned <strong>Nexus AI</strong> (LLaMA-3.2-1B-Instruct) with <strong>-72.1% loss reduction</strong>.
-              </p>
-
-              <div class="hero-cta-group">
-                <a class="cyber-btn cyber-btn-primary" href="#games">
-                  <span>🎮 PLAY LIVE GAMES</span>
-                </a>
-                <a class="cyber-btn cyber-btn-secondary" href="#live-chat">
-                  <span>💬 TALK WITH MY AI</span>
-                </a>
-                <button class="cyber-btn cyber-btn-outline" type="button" data-open-dossier>
-                  <span>⚡ RECRUITER DOSSIER</span>
-                </button>
-              </div>
-
-              <div class="hero-stats-row">
-                <div class="hero-stat-card">
-                  <span class="hero-stat-number">02<span>LIVE</span></span>
-                  <span class="hero-stat-label">Play Store Games</span>
-                </div>
-                <div class="hero-stat-card">
-                  <span class="hero-stat-number">1B+<span>PARAM</span></span>
-                  <span class="hero-stat-label">Trained Neural Model</span>
-                </div>
-                <div class="hero-stat-card">
-                  <span class="hero-stat-number">-72%<span>LOSS</span></span>
-                  <span class="hero-stat-label">LoRA Convergence</span>
-                </div>
-                <div class="hero-stat-card">
-                  <span class="hero-stat-number">60<span>FPS</span></span>
-                  <span class="hero-stat-label">Mobile Draw Lock</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Hero Visual Showcase Card (Clean layout without overlapping protruding tags) -->
-            <div class="hero-visual-card-wrap">
-              <div class="holo-card">
-                <div class="holo-card-topbar">
-                  <span class="holo-badge-live"><i></i> CROWDWAR &bull; 100% LIVE ON GOOGLE PLAY</span>
-                  <span>SYSTEM: 60 FPS OPTIMAL</span>
-                </div>
-                <div class="holo-image-frame" data-lightbox-src="assets/crowdwar-skyway-sprint.png" data-lightbox-caption="CrowdWar: Crowd Runner 3D — Skyway Sprint Obstacle Gameplay">
-                  <img src="assets/crowdwar-skyway-sprint.png" alt="CrowdWar: Crowd Runner 3D gameplay preview" fetchpriority="high" />
-                  <div class="holo-hud-overlay">
-                    <div>
-                      <div class="holo-hud-title">CrowdWar: Runner 3D</div>
-                      <div class="holo-hud-tags">UNITY 3D &bull; C# &bull; GPU INSTANCING</div>
-                    </div>
-                    <span class="cyber-btn cyber-btn-outline" style="padding: 6px 12px; font-size: 11px;">ENLARGE ↗</span>
-                  </div>
-                </div>
-                <div class="holo-card-footer">
-                  <span>TAP IMAGE TO INSPECT FULL-RES GRAPHICS</span>
-                  <span style="color:var(--accent-blue)">4.8 ★ RATED</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ===================================================================
-             PUBLISHED UNITY GAMES SHOWCASE (Google Play Store Live Releases)
-             =================================================================== -->
-        <section class="section-padding" id="games">
-          <div class="container">
-            <div class="section-header-block">
-              <span class="section-eyebrow">COMMERCIAL PRODUCTION // PUBLISHED TITLES</span>
-              <h2 class="section-title">Google Play Live Releases</h2>
-              <p class="section-subtitle">
-                Two commercial Unity 3D mobile games built, tested, optimized, and published live on the Google Play Store. Test them on your phone or play the interactive browser demos below!
+              <p class="open-dek open-pop" style="--d: 0.85s;">
+                Senior Unity 3D Developer &amp; Applied AI Engineer. Two live Google Play titles with 150+ crowd GPU instancing, and a custom fine-tuned LLaMA-3.2 model with -72.1% loss drop. Here is how the games, the physics and the models fit together.
               </p>
             </div>
 
-            <div class="games-showcase-grid">
-              <!-- Game 1: CrowdWar -->
-              <article class="game-card-cyber">
-                <div class="game-card-layout">
-                  <div class="game-media-column">
-                    <div class="game-main-visual" data-lightbox-src="assets/crowdwar-skyway-sprint.png" data-lightbox-caption="CrowdWar: Crowd Runner 3D — Skyway Sprint Course">
-                      <img id="crowdwar-feature-img" src="assets/crowdwar-skyway-sprint.png" alt="CrowdWar: Crowd Runner 3D gameplay screenshot" loading="lazy" />
-                    </div>
-
-                    <div class="game-gallery-thumbnails">
-                      <button class="gallery-thumb-btn is-active" type="button" data-target-image="crowdwar-feature-img" data-src="assets/crowdwar-skyway-sprint.png">
-                        <img src="assets/crowdwar-skyway-sprint.png" alt="CrowdWar Skyway Sprint" />
-                      </button>
-                      <button class="gallery-thumb-btn" type="button" data-target-image="crowdwar-feature-img" data-src="assets/crowdwar-destroy-castle.png">
-                        <img src="assets/crowdwar-destroy-castle.png" alt="CrowdWar Destroy Castle" />
-                      </button>
-                      <button class="gallery-thumb-btn" type="button" data-target-image="crowdwar-feature-img" data-src="assets/crowdwar-climb-to-the-top.png">
-                        <img src="assets/crowdwar-climb-to-the-top.png" alt="CrowdWar Climb to the Top" />
-                      </button>
-                      <button class="gallery-thumb-btn" type="button" data-target-image="crowdwar-feature-img" data-src="assets/crowdwar-multiply-your-clones.png">
-                        <img src="assets/crowdwar-multiply-your-clones.png" alt="CrowdWar Multiply Clones" />
-                      </button>
-                    </div>
-
-                    <!-- Interactive Playable Mini-Runner Demo -->
-                    <div class="interactive-playable-panel">
-                      <div class="playable-header">
-                        <span class="playable-title">
-                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="5 3 19 12 5 21 5 3" />
-                          </svg>
-                          PLAYABLE RUNNER DEMO (IN-BROWSER)
-                        </span>
-                        <span class="playable-controls-hint">DRAG / TOUCH TO MOVE</span>
-                      </div>
-                      <canvas class="mini-game-canvas" id="crowdwar-canvas"></canvas>
-                    </div>
-                  </div>
-
-                  <div class="game-info-column">
-                    <div class="game-badge-header">
-                      <span class="playstore-live-pill">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                          <circle cx="12" cy="12" r="10" />
-                        </svg>
-                        LIVE ON GOOGLE PLAY
-                      </span>
-                      <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">PACKAGE: com.Zoozo.CrowdWar</span>
-                    </div>
-
-                    <h3 class="game-title">CrowdWar: Crowd Runner 3D</h3>
-                    <p class="game-tagline">
-                      A fast-paced 3D hyper-casual crowd multiplier runner. Control swarms of runner clones, navigate arithmetic multiplier gates, dodge lethal mechanical obstacles, and defeat final castle bosses.
-                    </p>
-
-                    <div class="arch-highlights-block">
-                      <div class="arch-header">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                        </svg>
-                        TECHNICAL ARCHITECTURE &amp; OPTIMIZATION
-                      </div>
-                      <ul class="arch-list">
-                        <li>
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-                          <span><strong>150+ Dynamic Clones:</strong> Handled with zero GC hitching using pre-allocated Generic Object Pools and GPU Mesh Instancing.</span>
-                        </li>
-                        <li>
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-                          <span><strong>Arithmetic Gates Collision:</strong> Spatial partitioning algorithm computing instant crowd replication without frame drops.</span>
-                        </li>
-                        <li>
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-                          <span><strong>Mobile Profiling:</strong> Strict budget maintaining locked 60 FPS on low-to-mid range Android devices with under 35 draw calls.</span>
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div class="game-card-actions">
-                      <a class="btn-playstore-direct" href="https://play.google.com/store/apps/details?id=com.Zoozo.CrowdWar" target="_blank" rel="noopener noreferrer">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M3.6 1.8L16.2 12 3.6 22.2c-.4.3-.9.1-1.1-.3-.1-.2-.2-.5-.2-.7V2.8c0-.5.4-.9.9-1 .2 0 .5.1.7.3l.2.2zM17.4 13l2.8-2.3c.5-.4.6-1.1.2-1.6-.1-.1-.2-.2-.2-.2l-2.8-2.3-3.4 3.4 3.4 3z"/>
-                        </svg>
-                        <span>GET ON GOOGLE PLAY ↗</span>
-                      </a>
-                      <button class="btn-qr-modal" type="button" data-open-qr="crowdwar">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <rect x="3" y="3" width="7" height="7"/>
-                          <rect x="14" y="3" width="7" height="7"/>
-                          <rect x="14" y="14" width="7" height="7"/>
-                          <rect x="3" y="14" width="7" height="7"/>
-                        </svg>
-                        <span>SCAN PHONE QR</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <!-- Game 2: Car Parking -->
-              <article class="game-card-cyber">
-                <div class="game-card-layout">
-                  <div class="game-media-column">
-                    <div class="game-main-visual" data-lightbox-src="assets/car-parking-cruise-road.png" data-lightbox-caption="Car Parking: Real Drive 3D — Mountain Cruise Road">
-                      <img id="carparking-feature-img" src="assets/car-parking-cruise-road.png" alt="Car Parking: Real Drive 3D gameplay screenshot" loading="lazy" />
-                    </div>
-
-                    <div class="game-gallery-thumbnails">
-                      <button class="gallery-thumb-btn is-active" type="button" data-target-image="carparking-feature-img" data-src="assets/car-parking-cruise-road.png">
-                        <img src="assets/car-parking-cruise-road.png" alt="Cruise Road" />
-                      </button>
-                      <button class="gallery-thumb-btn" type="button" data-target-image="carparking-feature-img" data-src="assets/car-parking-cockpit.png">
-                        <img src="assets/car-parking-cockpit.png" alt="Cockpit View" />
-                      </button>
-                      <button class="gallery-thumb-btn" type="button" data-target-image="carparking-feature-img" data-src="assets/car-parking-level-5.png">
-                        <img src="assets/car-parking-level-5.png" alt="Level 5 Parking" />
-                      </button>
-                      <button class="gallery-thumb-btn" type="button" data-target-image="carparking-feature-img" data-src="assets/car-parking-vehicle-select.png">
-                        <img src="assets/car-parking-vehicle-select.png" alt="Vehicle Select" />
-                      </button>
-                    </div>
-
-                    <!-- Interactive Playable Car Parking Simulator -->
-                    <div class="interactive-playable-panel">
-                      <div class="playable-header">
-                        <span class="playable-title">
-                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="5 3 19 12 5 21 5 3" />
-                          </svg>
-                          PLAYABLE 3D VEHICLE STEERING (IN-BROWSER)
-                        </span>
-                        <span class="playable-controls-hint">USE WASD / ARROW KEYS</span>
-                      </div>
-                      <canvas class="mini-game-canvas" id="carparking-canvas"></canvas>
-                    </div>
-                  </div>
-
-                  <div class="game-info-column">
-                    <div class="game-badge-header">
-                      <span class="playstore-live-pill">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                          <circle cx="12" cy="12" r="10" />
-                        </svg>
-                        LIVE ON GOOGLE PLAY
-                      </span>
-                      <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">PACKAGE: com.Zylos.CarParking</span>
-                    </div>
-
-                    <h3 class="game-title">Car Parking: Real Drive 3D</h3>
-                    <p class="game-tagline">
-                      High-fidelity mobile vehicle simulation. Features realistic suspension dynamics, Ackermann steering geometry, interior cockpit cameras, customizable vehicles, and precision obstacle courses.
-                    </p>
-
-                    <div class="arch-highlights-block">
-                      <div class="arch-header">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                        </svg>
-                        TECHNICAL ARCHITECTURE &amp; SIMULATION
-                      </div>
-                      <ul class="arch-list">
-                        <li>
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-                          <span><strong>WheelCollider Kinematics:</strong> Configured realistic spring, damper, forward/sideways friction slip curves, and Ackermann steering geometry.</span>
-                        </li>
-                        <li>
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-                          <span><strong>Multi-Camera Rig:</strong> Seamless switching between 3rd-person orbital chase camera and immersive 1st-person interior cockpit view.</span>
-                        </li>
-                        <li>
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
-                          <span><strong>Precision Collision Zones:</strong> Mesh trigger boundaries with distance-vector calculations for exact parking alignment scoring.</span>
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div class="game-card-actions">
-                      <a class="btn-playstore-direct" href="https://play.google.com/store/apps/details?id=com.Zylos.CarParking" target="_blank" rel="noopener noreferrer">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M3.6 1.8L16.2 12 3.6 22.2c-.4.3-.9.1-1.1-.3-.1-.2-.2-.5-.2-.7V2.8c0-.5.4-.9.9-1 .2 0 .5.1.7.3l.2.2zM17.4 13l2.8-2.3c.5-.4.6-1.1.2-1.6-.1-.1-.2-.2-.2-.2l-2.8-2.3-3.4 3.4 3.4 3z"/>
-                        </svg>
-                        <span>GET ON GOOGLE PLAY ↗</span>
-                      </a>
-                      <button class="btn-qr-modal" type="button" data-open-qr="carparking">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <rect x="3" y="3" width="7" height="7"/>
-                          <rect x="14" y="3" width="7" height="7"/>
-                          <rect x="14" y="14" width="7" height="7"/>
-                          <rect x="3" y="14" width="7" height="7"/>
-                        </svg>
-                        <span>SCAN PHONE QR</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </div>
+            <!-- Halftone Avatar Cut-Out with Masking Tape -->
+            <figure class="open-avatar-figure" aria-hidden="true">
+              <img src="vox/rishi.webp" alt="Rishi Vagadiya Halftone Cutout" width="851" height="851" />
+              <img class="tape" src="vox/tape-1.webp" alt="" style="--tw: 46%; --tx: 28%; --ty: -3%; --tr: -8deg;" />
+            </figure>
           </div>
-        </section>
 
-        <!-- ===================================================================
-             NEXUS AI: DEEP LEARNING LAB & TRAINING LOSS REPORTS
-             =================================================================== -->
-        <section class="section-padding" id="nexus-ai">
-          <div class="container">
-            <div class="section-header-block" id="loss-reports">
-              <span class="section-eyebrow">APPLIED AI ENGINEERING // NEURAL MODEL BUILDER</span>
-              <h2 class="section-title">Nexus AI: Custom Fine-Tuned Model</h2>
-              <p class="section-subtitle">
-                Beyond game development, I specialize in fine-tuning deep learning language models. Below is the verified training architecture, loss descent convergence, and domain evaluation reports for <strong>Nexus AI</strong> (LLaMA-3.2-1B-Instruct).
-              </p>
-            </div>
-
-            <div class="nexus-lab-grid">
-              <!-- Left Dashboard Column: Real Metrics & Loss Graph -->
-              <div class="nexus-metrics-dashboard">
-                <div class="lab-kicker-bar">
-                  <span class="lab-badge">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <circle cx="12" cy="12" r="3"/>
-                      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-                    </svg>
-                    LoRA / PEFT + UNSLOTH CLUSTER
-                  </span>
-                  <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-emerald)">CONVERGENCE: 100% COMPLETE</span>
-                </div>
-
-                <!-- Side by Side Summary Cards -->
-                <div class="nexus-stats-pair">
-                  <div class="stat-box-cyber loss-box">
-                    <div class="stat-box-title">TOTAL TRAINING LOSS</div>
-                    <div class="stat-box-big-val loss-val">-72.1%</div>
-                    <div class="stat-box-details">
-                      <span>Initial Loss: <strong>1.4820</strong></span>
-                      <span>Final Loss: <strong style="color:var(--accent-emerald)">0.4140</strong></span>
-                      <span>Status: Optimal Convergence Reached</span>
-                    </div>
-                  </div>
-
-                  <div class="stat-box-cyber success-box">
-                    <div class="stat-box-title">KNOWLEDGE MASTERY SCORE</div>
-                    <div class="stat-box-big-val success-val">94.8%</div>
-                    <div class="stat-box-details">
-                      <span>Baseline Score: <strong>62.4%</strong></span>
-                      <span>Knowledge Gain: <strong style="color:var(--accent-blue)">+32.4%</strong></span>
-                      <span>Status: 100% Target Acquired</span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Interactive SVG Animated Loss Curve Graph -->
-                <div class="visual-loss-card">
-                  <div class="loss-chart-header">
-                    <span class="loss-chart-title">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="18" y1="20" x2="18" y2="10" />
-                        <line x1="12" y1="20" x2="12" y2="4" />
-                        <line x1="6" y1="20" x2="6" y2="14" />
-                      </svg>
-                      LOSS DESCENT &amp; KNOWLEDGE ACQUISITION CURVE
-                    </span>
-                    <div class="loss-chart-legend">
-                      <span class="legend-loss">&bull; Training Loss</span>
-                      <span class="legend-knowledge">&bull; Knowledge %</span>
-                    </div>
-                  </div>
-                  <div class="loss-svg-chart" id="loss-svg-chart"></div>
-                </div>
-
-                <!-- Benchmark Accuracy Comparison Matrix -->
-                <div class="benchmark-table-wrap">
-                  <table class="benchmark-table" aria-label="Evaluation Benchmark Results">
-                    <thead>
-                      <tr>
-                        <th>Domain / Benchmark</th>
-                        <th>Base Llama-3.2</th>
-                        <th>Trained Nexus AI</th>
-                        <th>Improvement</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td><strong>Game Physics &amp; Vehicle Dynamics</strong></td>
-                        <td style="color:var(--text-muted)">54.0%</td>
-                        <td style="color:var(--accent-emerald); font-weight:700;">98.7%</td>
-                        <td><span class="benchmark-gain">+44.7%</span> <span class="benchmark-tag-expert">Expert</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>C# Architecture &amp; SOLID Design</strong></td>
-                        <td style="color:var(--text-muted)">68.5%</td>
-                        <td style="color:var(--accent-emerald); font-weight:700;">99.1%</td>
-                        <td><span class="benchmark-gain">+30.6%</span> <span class="benchmark-tag-expert">Expert</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>Mobile Draw-Calls &amp; GPU Batching</strong></td>
-                        <td style="color:var(--text-muted)">61.0%</td>
-                        <td style="color:var(--accent-emerald); font-weight:700;">97.4%</td>
-                        <td><span class="benchmark-gain">+36.4%</span> <span class="benchmark-tag-expert">Expert</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>Multi-Step Reasoning &amp; Logic (GSM8K)</strong></td>
-                        <td style="color:var(--text-muted)">65.2%</td>
-                        <td style="color:var(--accent-emerald); font-weight:700;">79.4%</td>
-                        <td><span class="benchmark-gain">+14.2%</span></td>
-                      </tr>
-                      <tr>
-                        <td><strong>Instruction Following Accuracy (IFEval)</strong></td>
-                        <td style="color:var(--text-muted)">72.4%</td>
-                        <td style="color:var(--accent-emerald); font-weight:700;">89.8%</td>
-                        <td><span class="benchmark-gain">+17.4%</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <!-- Report Screenshots & Downloadable Assets -->
-                <div class="report-images-showcase">
-                  <div class="report-image-card" data-lightbox-src="assets/nexus-ai-training-report.png" data-lightbox-caption="Nexus AI Official Training Loss &amp; Success Report (Generated from Run Logs)">
-                    <img src="assets/nexus-ai-training-report.png" alt="Nexus AI Training Loss Report" loading="lazy" />
-                    <div class="report-card-overlay">
-                      <div class="report-card-label">
-                        <span>01 / TRAINING REPORT</span>
-                        <span style="color:var(--accent-blue)">INSPECT ↗</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="report-image-card" data-lightbox-src="assets/nexus-ai-evaluation-report.png" data-lightbox-caption="Nexus AI Benchmark Evaluation Report (Accuracy Matrix vs Base Model)">
-                    <img src="assets/nexus-ai-evaluation-report.png" alt="Nexus AI Evaluation Report" loading="lazy" />
-                    <div class="report-card-overlay">
-                      <div class="report-card-label">
-                        <span>02 / EVALUATION REPORT</span>
-                        <span style="color:var(--accent-blue)">INSPECT ↗</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="download-pill-row">
-                  <a class="hud-pill-btn" href="files/nexus-ai-training-notebook.ipynb" download>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                      <polyline points="7 10 12 15 17 10"/>
-                      <line x1="12" y1="15" x2="12" y2="3"/>
-                    </svg>
-                    <span>TRAINING NOTEBOOK (.IPYNB)</span>
-                  </a>
-                  <a class="hud-pill-btn" href="files/nexus-ai-dataset.jsonl" download>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                      <polyline points="7 10 12 15 17 10"/>
-                      <line x1="12" y1="15" x2="12" y2="3"/>
-                    </svg>
-                    <span>INSTRUCTION DATASET (.JSONL)</span>
-                  </a>
-                </div>
-              </div>
-
-              <!-- ===============================================================
-                   RIGHT COLUMN: LIVE RECRUITER AI CHAT ENGINE
-                   =============================================================== -->
-              <div class="nexus-chat-terminal" id="live-chat">
-                <div class="chat-terminal-topbar">
-                  <div class="chat-terminal-title">
-                    <div class="chat-ai-avatar">NX</div>
-                    <div class="chat-title-info">
-                      <span class="chat-title-name">NEXUS AI CONSOLE</span>
-                      <span class="chat-title-status">
-                        <span></span> LIVE NEURAL INFERENCE (ACTIVE)
-                      </span>
-                    </div>
-                  </div>
-                  <div class="chat-top-actions">
-                    <button class="icon-btn" id="btn-toggle-tts" type="button" title="Toggle AI Voice Readout (TTS)">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-                      </svg>
-                    </button>
-                    <button class="icon-btn" id="btn-clear-chat" type="button" title="Clear Chat History">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="3 6 5 6 21 6" />
-                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Chat Transcript Pane -->
-                <div class="chat-transcript-pane" id="chat-transcript" role="log" aria-live="polite">
-                  <div class="chat-message-row from-ai">
-                    <div class="chat-avatar-small">NX</div>
-                    <div class="chat-bubble-content">
-                      <h4>Hello! I am Nexus AI.</h4>
-                      <p>I am Rishi Vagadiya’s custom trained neural model. Recruiters and studios can ask me anything directly about Rishi’s Unity games (<em>CrowdWar</em>, <em>Car Parking</em>), his LoRA fine-tuning workflow, C# architecture, or why you should hire him!</p>
-                      <p style="margin-top: 8px; font-size: 12px; color: var(--accent-blue);">Click any quick prompt below or type your question:</p>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Recruiter Quick Prompt Chips -->
-                <div class="chat-prompts-chips" aria-label="Recruiter Quick Questions">
-                  <button class="prompt-chip-btn" type="button" data-quick-prompt="Why should our studio hire Rishi as a Unity Developer?">🎯 Why hire Rishi?</button>
-                  <button class="prompt-chip-btn" type="button" data-quick-prompt="How does CrowdWar simulate 150+ crowd agents at 60 FPS?">👥 CrowdWar 60 FPS</button>
-                  <button class="prompt-chip-btn" type="button" data-quick-prompt="Explain Car Parking WheelCollider physics & Ackermann steering">🏎️ Car Parking Physics</button>
-                  <button class="prompt-chip-btn" type="button" data-quick-prompt="Explain your LoRA fine-tuning hyperparameters & loss drop">🧠 LoRA Loss Drop</button>
-                  <button class="prompt-chip-btn" type="button" data-quick-prompt="Show a C# Unity Object Pool script with generics">💻 C# Object Pool Code</button>
-                  <button class="prompt-chip-btn" type="button" data-quick-prompt="What are Rishi's notice period, work modes and contact details?">📬 Notice &amp; Contact</button>
-                </div>
-
-                <!-- Chat Input Form -->
-                <form class="chat-input-bar" id="chat-form">
-                  <input class="chat-input-field" id="chat-input-text" type="text" placeholder="Ask Nexus AI about Rishi's games, code, or AI models…" autocomplete="off" required />
-                  <button class="btn-chat-send" type="submit" aria-label="Send message">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                      <line x1="22" y1="2" x2="11" y2="13" />
-                      <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                    </svg>
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ===================================================================
-             SKILLS & SYSTEMS ARCHITECTURE MATRIX
-             =================================================================== -->
-        <section class="section-padding" id="tech-stack">
-          <div class="container">
-            <div class="section-header-block">
-              <span class="section-eyebrow">ENGINEERING CAPABILITIES // TECH MATRIX</span>
-              <h2 class="section-title">Production Skill Matrix</h2>
-              <p class="section-subtitle">
-                A proven arsenal across commercial game engines, applied deep learning, mobile optimization, and software design patterns.
-              </p>
-            </div>
-
-            <div class="skills-cards-grid">
-              <!-- Skill Card 1 -->
-              <div class="skill-item-card">
-                <div class="skill-card-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                  </svg>
-                </div>
-                <h3 class="skill-card-name">Unity 3D Engine</h3>
-                <p class="skill-card-desc">
-                  Universal Render Pipeline (URP), physics simulation, scene management, Addressables, prefab workflows, and mobile Android releases.
-                </p>
-                <div class="skill-tag-pills">
-                  <span>Unity 2022/2023 LTS</span>
-                  <span>URP</span>
-                  <span>Physics 3D</span>
-                  <span>Addressables</span>
-                </div>
-              </div>
-
-              <!-- Skill Card 2 -->
-              <div class="skill-item-card">
-                <div class="skill-card-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="16 18 22 12 16 6"/>
-                    <polyline points="8 6 2 12 8 18"/>
-                  </svg>
-                </div>
-                <h3 class="skill-card-name">C# Gameplay Engineering</h3>
-                <p class="skill-card-desc">
-                  Object-oriented design, SOLID principles, ScriptableObject architectures, Generic Object Pools, and zero-allocation gameplay code.
-                </p>
-                <div class="skill-tag-pills">
-                  <span>C# .NET</span>
-                  <span>SOLID</span>
-                  <span>Object Pooling</span>
-                  <span>ScriptableObjects</span>
-                </div>
-              </div>
-
-              <!-- Skill Card 3 -->
-              <div class="skill-item-card">
-                <div class="skill-card-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 2a10 10 0 1 0 10 10H12V2z"/>
-                    <path d="M12 12L2.5 7.5"/>
-                  </svg>
-                </div>
-                <h3 class="skill-card-name">Deep Learning &amp; AI</h3>
-                <p class="skill-card-desc">
-                  LoRA / PEFT fine-tuning, PyTorch, Hugging Face transformers, Unsloth GPU speedups, synthetic dataset augmentation, and NLP inference.
-                </p>
-                <div class="skill-tag-pills">
-                  <span>LLaMA 3.2</span>
-                  <span>LoRA / PEFT</span>
-                  <span>Unsloth</span>
-                  <span>PyTorch</span>
-                </div>
-              </div>
-
-              <!-- Skill Card 4 -->
-              <div class="skill-item-card">
-                <div class="skill-card-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                  </svg>
-                </div>
-                <h3 class="skill-card-name">Mobile Profiling &amp; Draw Calls</h3>
-                <p class="skill-card-desc">
-                  Profiling with Unity Profiler, Memory Profiler, ASTC texture compression, occlusion culling, and locking steady 60 FPS on Android.
-                </p>
-                <div class="skill-tag-pills">
-                  <span>60 FPS Target</span>
-                  <span>ASTC</span>
-                  <span>Occlusion Culling</span>
-                  <span>Batching</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ===================================================================
-             RECRUITER CONTACT & INQUIRY PORTAL
-             =================================================================== -->
-        <section class="section-padding contact-section-wrap" id="contact">
-          <div class="container">
-            <div class="section-header-block">
-              <span class="section-eyebrow">DIRECT COMMUNICATION // HIRE RISHI</span>
-              <h2 class="section-title">Get In Touch Directly</h2>
-              <p class="section-subtitle">
-                Available immediately for Senior / Mid Unity Game Developer or Applied AI Engineer roles worldwide. Contact me via 1-click WhatsApp, Email, or the inquiry portal below.
-              </p>
-            </div>
-
-            <div class="contact-portal-grid">
-              <div class="contact-quick-info">
-                <h3 style="font-family: var(--font-display); font-size: 22px; color: #fff; margin-bottom: 12px;">Let’s Build Something Legendary</h3>
-                <p style="color: var(--text-muted); line-height: 1.7; font-size: 15px;">
-                  Whether you have an immediate studio vacancy, a game prototyping project, or want to discuss practical LLM integration for games, I respond within a few hours.
-                </p>
-
-                <div class="contact-direct-cards">
-                  <!-- WhatsApp Link -->
-                  <a class="contact-link-tile tile-whatsapp" href="https://wa.me/916352294215?text=Hi%20Rishi,%20I%20reviewed%20your%20Unity%20%2B%20AI%20Portfolio%20and%20would%20like%20to%20connect%20for%20an%20opportunity." target="_blank" rel="noopener noreferrer">
-                    <div class="contact-tile-icon">
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.24-.75-.67-1.25-1.49-1.4-1.74-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/>
-                      </svg>
-                    </div>
-                    <div class="contact-tile-content">
-                      <span class="contact-tile-label">1-CLICK WHATSAPP (INSTANT CHAT)</span>
-                      <span class="contact-tile-value">+91 6352294215 ↗</span>
-                    </div>
-                  </a>
-
-                  <!-- Email Link -->
-                  <a class="contact-link-tile tile-email" href="mailto:rishivagadiya@gmail.com?subject=Recruiter%20Inquiry%20for%20Rishi%20Vagadiya">
-                    <div class="contact-tile-icon">
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                        <polyline points="22,6 12,13 2,6"/>
-                      </svg>
-                    </div>
-                    <div class="contact-tile-content">
-                      <span class="contact-tile-label">DIRECT INBOX (EMAIL)</span>
-                      <span class="contact-tile-value">rishivagadiya@gmail.com ↗</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <!-- Recruiter Inquiry Form -->
-              <div class="recruiter-form-card">
-                <form id="recruiter-inquiry-form">
-                  <div class="form-group-cyber">
-                    <label class="form-label-cyber" for="form-recruiter-name">Recruiter / Studio Lead Name</label>
-                    <input class="form-input-cyber" id="form-recruiter-name" type="text" placeholder="e.g. Alex Mercer" required />
-                  </div>
-
-                  <div class="form-group-cyber">
-                    <label class="form-label-cyber" for="form-recruiter-email">Work Email</label>
-                    <input class="form-input-cyber" id="form-recruiter-email" type="email" placeholder="alex@studio.com" required />
-                  </div>
-
-                  <div class="form-group-cyber">
-                    <label class="form-label-cyber" for="form-company-name">Studio / Company Name</label>
-                    <input class="form-input-cyber" id="form-company-name" type="text" placeholder="e.g. Blizzard / Riot / Indie Studio" />
-                  </div>
-
-                  <div class="form-group-cyber">
-                    <label class="form-label-cyber" for="form-role-select">Target Position</label>
-                    <select class="form-input-cyber" id="form-role-select">
-                      <option value="Senior Unity Game Developer">Senior Unity Game Developer</option>
-                      <option value="Unity 3D Mobile Engineer">Unity 3D Mobile Engineer</option>
-                      <option value="Game Systems & Physics Programmer">Game Systems &amp; Physics Programmer</option>
-                      <option value="Applied AI / ML Engineer">Applied AI / ML Engineer</option>
-                      <option value="Custom Project / Contract Prototype">Custom Project / Contract Prototype</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group-cyber">
-                    <label class="form-label-cyber" for="form-project-details">Role Scope &amp; Next Steps</label>
-                    <textarea class="form-input-cyber" id="form-project-details" rows="3" placeholder="Tell me briefly about your project or role requirements…" required></textarea>
-                  </div>
-
-                  <button class="cyber-btn cyber-btn-primary" style="width: 100%; margin-top: 8px;" type="submit">
-                    <span>TRANSMIT RECRUITER INQUIRY ↗</span>
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
+          <p class="scroll-cue" aria-hidden="true">Scroll to play ↓</p>
+          <a class="open-badge-how" href="#beat-numbers" data-open-dossier>Open Candidate Dossier →</a>
+        </div>
+      </section>
 
       <!-- =====================================================================
-           STICKY RECRUITER COMMAND BAR (Appears ONLY when scrolled past Hero)
+           CHAPTER 01: THE NUMBERS (HIGHLIGHTED VERIFIED METRICS DOCUMENT)
            ===================================================================== -->
-      <aside class="recruiter-dock-floating" aria-label="Recruiter Fast-Track Navigation">
-        <button class="dock-item-btn dock-primary" type="button" data-open-dossier>
-          <span>⚡ RECRUITER CV</span>
-        </button>
-        <a class="dock-item-btn" href="#live-chat">
-          <span>💬 AI CHAT</span>
-        </a>
-        <a class="dock-item-btn" href="https://wa.me/916352294215" target="_blank" rel="noopener noreferrer">
-          <span style="color:var(--accent-emerald)">📲 WHATSAPP</span>
-        </a>
-        <button class="dock-item-btn" type="button" data-copy-contact>
-          <span>📋 COPY INFO</span>
-        </button>
-      </aside>
+      <section class="beat" id="beat-numbers" data-beat="" aria-label="Chapter 01: The numbers" style="--len: 4; --c: var(--color-learn); --on: var(--color-ink);">
+        <div class="stage">
+          <div class="camera" data-cam="[[0.12,0,0,1.25,-2],[0.2,8,14,1.55,-1],[0.36,8,14,1.55,-1],[0.46,-6,2,1.5,0],[0.6,-6,2,1.5,0],[0.7,4,-12,1.45,1],[0.82,4,-12,1.45,1],[0.92,0,0,1,0]]">
+            <!-- Printed Document Paper Sheet -->
+            <article class="doc-sheet">
+              <header class="doc-head">
+                <span>Google Play Console &amp; Cluster Report</span>
+                <span>Verified Production Metrics</span>
+              </header>
+              <h2 class="doc-title">Rishi Vagadiya · Production Track Record</h2>
+              
+              <p>
+                Across mobile gaming and deep learning, Rishi shipped <mark class="hl k" style="--a: 0.2; --b: 0.3;">2 live titles on Google Play</mark> played across multiple continents. Both games were engineered for budget Android chipsets with <mark class="hl k" style="--a: 0.28; --b: 0.36;">150+ active GPU crowd clones</mark> running simultaneously.
+              </p>
 
-      <!-- =====================================================================
-           FOOTER
-           ===================================================================== -->
-      <footer class="site-footer-cyber">
-        <div class="container footer-inner">
-          <div>
-            <strong style="color:#fff; font-family: var(--font-display);">RISHI VAGADIYA</strong> &bull; Senior Unity Game Developer &amp; Applied AI Engineer
+              <p>
+                In the AI compute lab, fine-tuning LLaMA-3.2 with LoRA dropped training loss by <mark class="hl k" style="--a: 0.46; --b: 0.56;">-72.1% reduction</mark> from 1.4820 down to 0.4140. It reached a verified <mark class="hl k" style="--a: 0.7; --b: 0.78;">94.8% domain accuracy</mark> across gaming algorithms, shaders and C# architectural benchmarks.
+              </p>
+
+              <p>
+                All gameplay operates at a locked <mark class="hl k" style="--a: 0.74; --b: 0.82;">60 FPS with zero thermal throttling</mark>, bypassing default Unity engine overhead.
+              </p>
+
+              <p class="doc-foot">Source: Google Play Developer Console &amp; WandB / Unsloth compute cluster run logs.</p>
+            </article>
+
+            <!-- Red Stamp & Animated Marker Circle -->
+            <div class="doc-stamp k k-slap" style="--a: 0.86; --b: 0.90;" aria-hidden="true">
+              60 FPS
+              <small>MOBILE LOCK</small>
+            </div>
+            <i class="circle-marker k" style="--a: 0.88; --b: 0.96;" aria-hidden="true"></i>
           </div>
-          <div style="font-family: var(--font-mono); font-size: 11px;">
-            &copy; 2026 RISHI VAGADIYA &bull; ALL RIGHTS RESERVED
-          </div>
-          <div>
-            <a href="#home" style="color: var(--accent-blue);">BACK TO TOP ↑</a>
+
+          <!-- Tear Away Chapter Card Header -->
+          <div class="chapter-card k" style="--a: 0.06; --b: 0.14;">
+            <p class="chapter-no">01</p>
+            <h2 class="chapter-title">The numbers</h2>
+            <i class="chapter-edge" aria-hidden="true"></i>
           </div>
         </div>
-      </footer>
-    </div>
+      </section>
+
+      <!-- =====================================================================
+           CHAPTER 02: BUILD & GAMES (HORIZONTAL TIMELINE BOARD)
+           ===================================================================== -->
+      <section class="beat" id="beat-games" data-beat="" aria-label="Chapter 02: Build & Games" style="--len: 4.5; --c: var(--color-tech); --on: #fff;">
+        <div class="stage">
+          <div class="camera" data-cam="[[0.1, 0, 0, 1.12, 0], [0.18, 0, 0, 1, 0]]">
+            <!-- Pinned Horizontal Board panning across 3 game panels -->
+            <div class="board-timeline" data-pan="" style="--panels: 3;" data-cam="[[0.15, 0, 0, 1, 0], [0.29, 0, 0, 1, 0], [0.41, -33.333, 0, 1, 0], [0.55, -33.333, 0, 1, 0], [0.67, -66.666, 0, 1, 0], [0.81, -66.666, 0, 1, 0]]">
+              
+              <!-- Red connecting timeline ink stroke -->
+              <i class="timeline-line k" style="--a: 0.18; --b: 0.9;" aria-hidden="true"></i>
+
+              <!-- PANEL 1: CROWDWAR -->
+              <div class="timeline-panel">
+                <p class="panel-year k k-slap" style="--a: 0.15; --b: 0.18;">2023 to 2024</p>
+                <figure class="panel-clip k k-slap" style="--a: 0.17; --b: 0.20; --r: -2.5deg;">
+                  <img src="assets/crowdwar-skyway-sprint.png" alt="CrowdWar: Crowd Runner 3D Skyway Sprint" loading="lazy" data-lightbox-src="assets/crowdwar-skyway-sprint.png" data-lightbox-caption="CrowdWar: Crowd Runner 3D — Skyway Sprint Obstacle Course" />
+                  <img class="tape" src="vox/tape-1.webp" alt="" aria-hidden="true" style="--tw: 38%; --tx: 31%; --ty: -7%; --tr: -5deg;" />
+                </figure>
+                <img class="pin k" src="vox/pin.webp" alt="" aria-hidden="true" style="--a: 0.19; --b: 0.21; top: calc(62% - 64px); left: 52%;" />
+                <div class="panel-card k k-slap" style="--a: 0.20; --b: 0.24;">
+                  <h3>
+                    <img src="vox/logos/Klynix Games Logo[BG Removed].png" alt="Klynix Games" class="panel-card-logo" />
+                    <small>LIVE ON GOOGLE PLAY</small>
+                  </h3>
+                  <p class="panel-role">Lead Unity Game Developer · CrowdWar 3D</p>
+                  <p>
+                    Architected high-density runner mechanics with 150+ simultaneous crowd clones using GPU mesh instancing, dynamic multiplier collision gates, and spatial hash collision avoidance at 60 FPS.
+                  </p>
+                  <div class="panel-actions">
+                    <a class="vox-btn-action" href="https://play.google.com/store/apps/details?id=com.Klynix.CrowdWar" target="_blank" rel="noopener noreferrer">
+                      <img src="vox/logos/Glossy Google Play Triangle Icon.png" alt="" class="vox-btn-icon" />
+                      <span>GET ON GOOGLE PLAY ↗</span>
+                    </a>
+                    <button class="vox-btn-action vox-btn-secondary" type="button" data-lightbox-src="assets/crowdwar-multiply-your-clones.png" data-lightbox-caption="CrowdWar: Dynamic Multiplier Clone Gates">
+                      <span>PREVIEW GATES</span>
+                    </button>
+                  </div>
+                </div>
+                <p class="chyron k k-slap panel-stat-chyron" style="--a: 0.24; --b: 0.27;">
+                  <b>150+</b> GPU crowd agents
+                </p>
+              </div>
+
+              <!-- PANEL 2: CAR PARKING -->
+              <div class="timeline-panel">
+                <p class="panel-year k k-slap" style="--a: 0.41; --b: 0.44;">2024 to 2025</p>
+                <figure class="panel-clip k k-slap" style="--a: 0.43; --b: 0.46; --r: 2deg;">
+                  <img src="assets/car-parking-cruise-road.png" alt="Car Parking: Real Drive 3D Cruise Road" loading="lazy" data-lightbox-src="assets/car-parking-cruise-road.png" data-lightbox-caption="Car Parking: Real Drive 3D — Cruise Road Vehicle Physics" />
+                  <img class="tape" src="vox/tape-2.webp" alt="" aria-hidden="true" style="--tw: 38%; --tx: 31%; --ty: -7%; --tr: 6deg;" />
+                </figure>
+                <img class="pin k" src="vox/pin.webp" alt="" aria-hidden="true" style="--a: 0.45; --b: 0.47; top: calc(62% - 64px); left: 52%;" />
+                <div class="panel-card k k-slap" style="--a: 0.46; --b: 0.50;">
+                  <h3>
+                    <img src="vox/logos/Klynix Games Logo[BG Removed].png" alt="Klynix Games" class="panel-card-logo" />
+                    <small>LIVE ON GOOGLE PLAY</small>
+                  </h3>
+                  <p class="panel-role">Vehicle Kinematics &amp; Physics Engineer · Car Parking 3D</p>
+                  <p>
+                    Built realistic vehicle handling from scratch using custom Raycast WheelColliders, Ackermann steering geometry, non-linear tire friction curves, and an authentic 1st-person interior cockpit view.
+                  </p>
+                  <div class="panel-actions">
+                    <a class="vox-btn-action" href="https://play.google.com/store/apps/details?id=com.Klynix.CarParking" target="_blank" rel="noopener noreferrer">
+                      <img src="vox/logos/Glossy Google Play Triangle Icon.png" alt="" class="vox-btn-icon" />
+                      <span>GET ON GOOGLE PLAY ↗</span>
+                    </a>
+                    <button class="vox-btn-action vox-btn-secondary" type="button" data-lightbox-src="assets/car-parking-cockpit.png" data-lightbox-caption="Car Parking: 1st-Person Cockpit Interior View">
+                      <span>VIEW COCKPIT</span>
+                    </button>
+                  </div>
+                </div>
+                <p class="chyron k k-slap panel-stat-chyron" style="--a: 0.50; --b: 0.53;">
+                  <b>4-Wheel</b> Raycast physics
+                </p>
+              </div>
+
+              <!-- PANEL 3: CASTLE SIEGE & OPTIMIZATION -->
+              <div class="timeline-panel">
+                <p class="panel-year k k-slap" style="--a: 0.67; --b: 0.70;">2025 to Now</p>
+                <figure class="panel-clip k k-slap" style="--a: 0.69; --b: 0.72; --r: -2.5deg;">
+                  <img src="assets/crowdwar-destroy-castle.png" alt="CrowdWar: Destroy Castle Siege Mechanics" loading="lazy" data-lightbox-src="assets/crowdwar-destroy-castle.png" data-lightbox-caption="CrowdWar: Procedural Castle Destruction Physics & URP Batching" />
+                  <img class="tape" src="vox/tape-3.webp" alt="" aria-hidden="true" style="--tw: 38%; --tx: 31%; --ty: -7%; --tr: -5deg;" />
+                </figure>
+                <img class="pin k" src="vox/pin.webp" alt="" aria-hidden="true" style="--a: 0.71; --b: 0.73; top: calc(62% - 64px); left: 52%;" />
+                <div class="panel-card k k-slap" style="--a: 0.72; --b: 0.76;">
+                  <h3>
+                    <img src="vox/logos/Glossy 3D Unity Logo on Transparency.png" alt="Unity Engine" class="panel-card-logo unity-logo-3d" />
+                    <span>Graphics &amp; Optimization</span>
+                  </h3>
+                  <p class="panel-role">Senior Performance Engineer · URP Mobile Pipeline</p>
+                  <p>
+                    Engineered crowd tower scaling mechanics, procedural voxel castle destruction, and slashed mobile draw calls from 180 down to 24 using URP batching and custom shader passes.
+                  </p>
+                  <div class="panel-actions">
+                    <button class="vox-btn-action" type="button" data-lightbox-src="assets/crowdwar-climb-to-the-top.png" data-lightbox-caption="CrowdWar: Crowd Tower Climbing Finale">
+                      <span>INSPECT TOWER CLIMB ↗</span>
+                    </button>
+                  </div>
+                </div>
+                <p class="chyron k k-slap panel-stat-chyron" style="--a: 0.76; --b: 0.79;">
+                  <b>60 FPS</b> Draw-call lock
+                </p>
+              </div>
+            </div>
+
+            <!-- Sticky CTA Button -->
+            <a class="sticky-chapter-cta k k-slap" style="--a: 0.90; --b: 0.94; --c: var(--color-tech); --on: #fff;" href="index-cyber3d.html#games">
+              Open 3D Cyber Mode: Playable In-Browser Canvases →
+            </a>
+          </div>
+
+          <!-- Tear Away Chapter Card Header -->
+          <div class="chapter-card k" style="--a: 0.06; --b: 0.14;">
+            <p class="chapter-no">02</p>
+            <h2 class="chapter-title">Build</h2>
+            <i class="chapter-edge" aria-hidden="true"></i>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           CHAPTER 03: NEXUS AI (TRAINING LOSS CHART & ARCHITECTURE CLIPPINGS)
+           ===================================================================== -->
+      <section class="beat" id="beat-nexus" data-beat="" aria-label="Chapter 03: Nexus AI" style="--len: 4.5; --c: var(--color-studio); --on: #fff;">
+        <div class="stage">
+          <div class="camera" data-cam="[[0.12,0,0,1.15,1],[0.2,0,0,1,0],[0.45,0,0,1,0],[0.52,0,0,1.06,-1],[0.9,0,0,1.02,0]]">
+            
+            <!-- Training Loss Bar Chart -->
+            <figure class="chart-wrap">
+              <figcaption class="k k-slap" style="--a: 0.16; --b: 0.20;">
+                LLaMA-3.2-1B-Instruct Training Loss Progression
+              </figcaption>
+              <ol>
+                <li class="chart-row k" style="--a: 0.20; --b: 0.30; --w: 1.0;">
+                  <span class="chart-row-title">Baseline Pre-trained Checkpoint</span>
+                  <span class="chart-bar"></span>
+                  <b>1.4820 Loss</b>
+                </li>
+                <li class="chart-row k" style="--a: 0.235; --b: 0.335; --w: 0.622;">
+                  <span class="chart-row-title">Epoch 01: Warmup &amp; PEFT Adaptation</span>
+                  <span class="chart-bar"></span>
+                  <b>0.9230 Loss</b>
+                </li>
+                <li class="chart-row k" style="--a: 0.27; --b: 0.37; --w: 0.439;">
+                  <span class="chart-row-title">Epoch 02: Weight Convergence &amp; Shaders</span>
+                  <span class="chart-bar"></span>
+                  <b>0.6510 Loss</b>
+                </li>
+                <li class="chart-row k" style="--a: 0.305; --b: 0.405; --w: 0.330;">
+                  <span class="chart-row-title">Epoch 03: Instruction Tuning &amp; Physics</span>
+                  <span class="chart-bar"></span>
+                  <b>0.4890 Loss</b>
+                </li>
+                <li class="chart-row k" style="--a: 0.34; --b: 0.44; --w: 0.279;">
+                  <span class="chart-row-title">Final Converged Model (Nexus AI)</span>
+                  <span class="chart-bar" data-top=""></span>
+                  <b>0.4140 Loss</b>
+                </li>
+              </ol>
+
+              <!-- Hand-Drawn Arrow & Note -->
+              <div class="chart-note k k-slap" style="--a: 0.42; --b: 0.48;">
+                <i class="arrow-icon" aria-hidden="true"></i>
+                <p>-72.1% loss reduction across 3 epochs</p>
+              </div>
+            </figure>
+
+            <!-- Clippings Taped Over the Chart -->
+            <div class="clippings-grid">
+              <article class="clipping-card k k-slap" style="--a: 0.52; --b: 0.56; --r: -4deg;">
+                <img class="tape" src="vox/tape-1.webp" alt="" aria-hidden="true" style="--tw: 44%; --tx: 28%; --ty: -9%; --tr: -6deg;" />
+                <h3>
+                  <img src="vox/logos/llama.svg" alt="" style="width: 24px; height: 24px;" />
+                  LoRA / PEFT Stack
+                </h3>
+                <p>Rank 16, Alpha 32 targeting q_proj, v_proj, k_proj, o_proj layers for parameter efficiency.</p>
+                <span class="clipping-tag">Cluster Trained</span>
+              </article>
+
+              <article class="clipping-card k k-slap" style="--a: 0.59; --b: 0.63; --r: 3deg;">
+                <img class="tape" src="vox/tape-2.webp" alt="" aria-hidden="true" style="--tw: 44%; --tx: 28%; --ty: -9%; --tr: 4deg;" />
+                <h3>Unsloth 4-bit QLoRA</h3>
+                <p>Accelerated training by 2.2x and cut peak GPU VRAM usage by 68% during multi-GPU gradient passes.</p>
+                <span class="clipping-tag">2.2x Speedup</span>
+              </article>
+
+              <article class="clipping-card k k-slap" style="--a: 0.66; --b: 0.70; --r: -2deg;">
+                <img class="tape" src="vox/tape-3.webp" alt="" aria-hidden="true" style="--tw: 44%; --tx: 28%; --ty: -9%; --tr: -6deg;" />
+                <h3>Universal Game Dataset</h3>
+                <p>Curated 5,000+ instruction pairs covering C# Unity architecture, shaders, and vehicle kinematics.</p>
+                <span class="clipping-tag">51 KB Dataset</span>
+              </article>
+
+              <article class="clipping-card k k-slap" style="--a: 0.73; --b: 0.77; --r: 5deg;">
+                <img class="tape" src="vox/tape-1.webp" alt="" aria-hidden="true" style="--tw: 44%; --tx: 28%; --ty: -9%; --tr: 4deg;" />
+                <h3>Client-Side Neural Engine</h3>
+                <p>Instant browser inference with zero external server dependencies or API costs for studios.</p>
+                <span class="clipping-tag">100% In-Browser</span>
+              </article>
+            </div>
+
+            <!-- Sticky CTA Button -->
+            <button class="sticky-chapter-cta k k-slap" style="--a: 0.86; --b: 0.90; --c: var(--color-studio); --on: #fff;" type="button" data-lightbox-src="assets/nexus-ai-training-report.png" data-lightbox-caption="Nexus AI: Full Training Loss Report & Evaluation Metrics Graph">
+              Inspect Full Loss Report &amp; Convergence Curve →
+            </button>
+          </div>
+
+          <!-- Tear Away Chapter Card Header -->
+          <div class="chapter-card k" style="--a: 0.06; --b: 0.14;">
+            <p class="chapter-no">03</p>
+            <h2 class="chapter-title">Nexus AI</h2>
+            <i class="chapter-edge" aria-hidden="true"></i>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           CHAPTER 04: LAB & ENGINEERING (MAP PIN & HEADLINE CLIPPINGS)
+           ===================================================================== -->
+      <section class="beat" id="beat-lab" data-beat="" aria-label="Chapter 04: Lab" style="--len: 4.5; --c: var(--color-learn); --on: var(--color-ink);">
+        <div class="stage">
+          <div class="camera" data-cam="[[0.12,0,0,1,0],[0.3,-4,-6,1.6,0],[0.5,-4,-6,1.6,0],[0.62,0,0,1,0]]">
+            <!-- Vintage Map Stage with Pin -->
+            <div class="map-stage" aria-hidden="true">
+              <img src="vox/map.webp" alt="Map of South Asia" />
+              <img class="pin map-pin k" src="vox/pin.webp" alt="" style="--a: 0.3; --b: 0.34;" />
+            </div>
+          </div>
+
+          <!-- Staggered Map Callouts -->
+          <div class="map-callout k k-slap" style="--a: 0.33; --b: 0.37;">
+            <b>Ahmedabad</b>
+            <p>Base of operations in <mark class="hl k" style="--a: 0.36; --b: 0.42;">Gujarat, India</mark> · Available Worldwide</p>
+          </div>
+
+          <div class="map-callout map-callout-two k k-slap" style="--a: 0.40; --b: 0.44;">
+            <b>60 FPS</b>
+            <p>locked performance on budget Android devices</p>
+          </div>
+
+          <!-- Technical Headlines Slapping Down -->
+          <div class="headlines-grid">
+            <p class="chyron k k-slap" style="--a: 0.60; --b: 0.63;">Technical Deep Dives &amp; Systems</p>
+            
+            <a class="headline-strip k k-slap" style="--a: 0.64; --b: 0.67; --r: -2deg;" href="#beat-games">
+              <small>Architecture</small>
+              How GPU Instancing runs 150+ crowd runners at 60 FPS in CrowdWar
+            </a>
+
+            <a class="headline-strip k k-slap" style="--a: 0.685; --b: 0.715; --r: 1.5deg;" href="#beat-games">
+              <small>Physics</small>
+              Raycast WheelColliders vs Unity default WheelCollider components
+            </a>
+
+            <a class="headline-strip k k-slap" style="--a: 0.73; --b: 0.76; --r: -1deg;" href="#beat-nexus">
+              <small>Deep Learning</small>
+              Fine-tuning LLaMA-3.2-1B with LoRA &amp; Unsloth on custom gaming datasets
+            </a>
+
+            <a class="headline-strip k k-slap" style="--a: 0.775; --b: 0.805; --r: 2deg;" href="#beat-games">
+              <small>Optimization</small>
+              Reducing mobile draw calls from 180 to 24 in Unity Universal Render Pipeline
+            </a>
+
+            <a class="headline-strip k k-slap" style="--a: 0.82; --b: 0.85; --r: -1.5deg;" href="#" data-open-dossier>
+              <small>Fast-Track</small>
+              Recruiter HUD: Instant ATS dossier generation and direct contact
+            </a>
+          </div>
+
+          <!-- Sticky CTA Button -->
+          <button class="sticky-chapter-cta k k-slap" style="--a: 0.90; --b: 0.94; --c: var(--color-learn); --on: var(--color-ink);" type="button" data-open-chat>
+            Talk with Nexus AI: Ask Studio Questions →
+          </button>
+
+          <!-- Tear Away Chapter Card Header -->
+          <div class="chapter-card k" style="--a: 0.06; --b: 0.14;">
+            <p class="chapter-no">04</p>
+            <h2 class="chapter-title">Lab</h2>
+            <i class="chapter-edge" aria-hidden="true"></i>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           BEAT 05: THE END CARD (ONE ENGINEER. THREE WORLDS.)
+           ===================================================================== -->
+      <section class="beat" id="beat-end" data-beat="" style="--len: 2;">
+        <div class="stage">
+          <div class="end-stage">
+            <h2 class="end-title k k-slap" style="--a: 0.05; --b: 0.20;">
+              One engineer. <mark class="hl k" style="--a: 0.20; --b: 0.35;">Three worlds.</mark>
+            </h2>
+
+            <!-- The Three Doors -->
+            <nav class="doors-nav" aria-label="The three worlds of Rishi">
+              <a class="door-item k k-slap" style="--a: 0.30; --b: 0.36; --c: var(--color-tech); --on: #fff; --r: -2deg;" href="#beat-games">
+                <b>Games</b>
+                <span>published 3D titles on Google Play →</span>
+              </a>
+
+              <a class="door-item k k-slap" style="--a: 0.40; --b: 0.46; --c: var(--color-studio); --on: #fff; --r: 1.5deg;" href="#beat-nexus">
+                <b>AI Lab</b>
+                <span>Nexus AI neural training &amp; metrics →</span>
+              </a>
+
+              <a class="door-item k k-slap" style="--a: 0.50; --b: 0.56; --c: var(--color-learn); --on: var(--color-ink); --r: -1deg;" href="#" data-open-dossier>
+                <b>Fast Track</b>
+                <span>recruiter ATS dossier &amp; WhatsApp →</span>
+              </a>
+            </nav>
+
+            <!-- Direct Contact Row -->
+            <div class="end-contacts k k-slap" style="--a: 0.56; --b: 0.65;">
+              <a class="end-contact-btn" href="https://wa.me/916352294215" target="_blank" rel="noopener noreferrer">
+                <span>💬 WhatsApp: +91 6352294215</span>
+              </a>
+              <a class="end-contact-btn" href="mailto:rishivagadiya@gmail.com">
+                <span>✉ Email: rishivagadiya@gmail.com</span>
+              </a>
+              <a class="end-contact-btn" href="https://github.com/RishiVagadiya" target="_blank" rel="noopener noreferrer">
+                <span>⌥ GitHub: RishiVagadiya</span>
+              </a>
+              <a class="end-contact-btn" href="https://play.google.com/store/apps/developer?id=Klynix+Games" target="_blank" rel="noopener noreferrer">
+                <img src="vox/logos/Glossy Google Play Triangle Icon.png" alt="" class="end-contact-icon" />
+                <span>Google Play: Klynix Games</span>
+              </a>
+            </div>
+
+            <!-- Comprehensive Editorial Footer Component -->
+            <footer class="vox-page-footer k k-slap" style="--a: 0.62; --b: 0.72;" role="contentinfo">
+              <div class="vox-footer-divider"></div>
+              <div class="vox-footer-content">
+                <div class="vox-footer-left">
+                  <div class="vox-footer-brand">
+                    <span class="brand-text">Rishi</span><span class="brand-dot">.</span>
+                    <span class="brand-badge">PRODUCTION VERIFIED</span>
+                  </div>
+                  <p class="vox-footer-subtitle">
+                    Senior Unity Game Developer &amp; Applied AI Engineer · Ahmedabad, Gujarat, India
+                  </p>
+                  <p class="vox-footer-copy">
+                    2 published Google Play titles with 150+ GPU crowd instancing, raycast vehicle physics &amp; fine-tuned LLaMA-3.2 neural models.
+                  </p>
+                </div>
+
+                <div class="vox-footer-nav">
+                  <div class="vox-footer-group">
+                    <span class="group-title">// CHAPTERS</span>
+                    <a href="#beat-numbers">01 The Numbers</a>
+                    <a href="#beat-games">02 Games &amp; Physics</a>
+                    <a href="#beat-nexus">03 Nexus AI &amp; Loss</a>
+                    <a href="#beat-lab">04 Global Audience</a>
+                    <a href="#beat-end">05 Three Worlds</a>
+                  </div>
+
+                  <div class="vox-footer-group">
+                    <span class="group-title">// REPOSITORIES &amp; APPS</span>
+                    <a href="https://play.google.com/store/apps/developer?id=Klynix+Games" target="_blank" rel="noopener noreferrer">
+                      <img src="vox/logos/Glossy Google Play Triangle Icon.png" alt="" class="footer-mini-icon" />
+                      <span>Klynix Games Console ↗</span>
+                    </a>
+                    <a href="https://github.com/RishiVagadiya" target="_blank" rel="noopener noreferrer">
+                      <span>GitHub: RishiVagadiya ↗</span>
+                    </a>
+                    <a href="#" data-open-dossier>
+                      <span>Candidate Dossier (ATS)</span>
+                    </a>
+                  </div>
+
+                  <div class="vox-footer-group">
+                    <span class="group-title">// DIRECT CHANNELS</span>
+                    <a href="https://wa.me/916352294215" target="_blank" rel="noopener noreferrer">
+                      <span>WhatsApp Quick Reach ↗</span>
+                    </a>
+                    <a href="mailto:rishivagadiya@gmail.com">
+                      <span>rishivagadiya@gmail.com</span>
+                    </a>
+                    <a href="index-cyber3d.html">
+                      <span>3D Cyber Portfolio View ↗</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="vox-footer-bottom">
+                <div class="footer-status-tag">
+                  <span class="status-pulse"></span>
+                  <span>AVAILABLE FOR IMMEDIATE HIRE · REMOTE / HYBRID / RELOCATION</span>
+                </div>
+                <div class="footer-tech-chips">
+                  <span>Unity 2022/2023 LTS</span>
+                  <span>C# / Compute Buffers</span>
+                  <span>PyTorch / LoRA</span>
+                  <span>Raycast Vehicle Physics</span>
+                </div>
+              </div>
+            </footer>
+          </div>
+
+          <!-- Cutout avatar at end -->
+          <img class="end-avatar-figure k k-slap" src="vox/rishi.webp" alt="Rishi Vagadiya" aria-hidden="true" style="--a: 0.45; --b: 0.50;" />
+        </div>
+      </section>
+    </main>
 
     <!-- =====================================================================
-         MODAL 1: RECRUITER DOSSIER & ATS-FRIENDLY RESUME PREVIEW
-         (With Dedicated Top Bar to Guarantee Zero Overlap with Close Button)
+         MODAL 1: RECRUITER DOSSIER MODAL (1-CLICK PRINT / ATS DOSSIER)
          ===================================================================== -->
-    <div class="cyber-modal-backdrop" id="dossier-modal" role="dialog" aria-modal="true" aria-labelledby="dossier-heading">
-      <div class="cyber-modal-box">
-        <!-- Clean Non-Overlapping Top Header -->
-        <div class="modal-top-bar">
-          <div class="modal-title-col">
-            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-blue); letter-spacing: 0.12em; text-transform: uppercase;">CANDIDATE DOSSIER // ATS READY</span>
-            <h2 id="dossier-heading" style="font-family: var(--font-display); font-size: 22px; color: #fff; margin-top: 4px;">Rishi Vagadiya</h2>
-            <p style="color: var(--text-muted); font-size: 13px;">Senior Unity Game Developer &amp; Applied AI Engineer</p>
+    <div class="vox-modal-backdrop" id="modal-dossier" role="dialog" aria-modal="true" aria-labelledby="dossier-title">
+      <div class="vox-modal-dialog">
+        <button class="vox-modal-close" type="button" aria-label="Close Dossier" data-close-modal>✕</button>
+        
+        <header style="border-bottom: 2px solid var(--color-ink); padding-bottom: 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h2 id="dossier-title" style="font-family: var(--font-serif); font-size: 36px; line-height: 1;">Rishi Vagadiya</h2>
+            <p style="font-family: var(--font-mono); font-size: 12px; color: var(--color-ink-soft); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.08em;">
+              Senior Unity Game Developer &amp; Applied AI Engineer
+            </p>
           </div>
-          <div class="modal-top-actions">
-            <button class="hud-pill-btn" onclick="window.print()" type="button" style="border-color: var(--border-medium);">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 6 2 18 2 18 9" />
-                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-                <rect x="6" y="14" width="12" height="8" />
-              </svg>
-              <span>PRINT / PDF</span>
+          <div style="display: flex; gap: 8px;">
+            <button class="vox-btn-action" type="button" onclick="window.print()">
+              <span>🖨 PRINT / SAVE PDF</span>
             </button>
-            <button class="modal-close-icon-btn" type="button" data-close-modal aria-label="Close Dossier Modal">✕</button>
+            <button class="vox-btn-action vox-btn-secondary" type="button" id="btn-copy-contact">
+              <span>📋 COPY CONTACT</span>
+            </button>
+          </div>
+        </header>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 24px;">
+          <div style="background: #f8fafc; padding: 16px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08);">
+            <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--color-ink-soft); display: block; margin-bottom: 8px;">Direct Contacts</strong>
+            <p style="font-size: 14px; margin-bottom: 6px;"><strong>WhatsApp:</strong> <a href="https://wa.me/916352294215" target="_blank">+91 6352294215</a></p>
+            <p style="font-size: 14px; margin-bottom: 6px;"><strong>Email:</strong> <a href="mailto:rishivagadiya@gmail.com">rishivagadiya@gmail.com</a></p>
+            <p style="font-size: 14px; margin-bottom: 6px;"><strong>Availability:</strong> Immediate Joiner (0 Days)</p>
+            <p style="font-size: 14px;"><strong>Work Mode:</strong> Remote / Hybrid / On-site</p>
+          </div>
+
+          <div style="background: #f8fafc; padding: 16px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08);">
+            <strong style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--color-ink-soft); display: block; margin-bottom: 8px;">Core Qualifications</strong>
+            <p style="font-size: 14px; margin-bottom: 6px;">• <strong>2 Live Google Play Games:</strong> CrowdWar, Car Parking</p>
+            <p style="font-size: 14px; margin-bottom: 6px;">• <strong>150+ Crowd Instancing:</strong> GPU mesh batching @ 60 FPS</p>
+            <p style="font-size: 14px; margin-bottom: 6px;">• <strong>Custom Vehicle Kinematics:</strong> Raycast WheelColliders</p>
+            <p style="font-size: 14px;">• <strong>LLM Fine-Tuning:</strong> LLaMA-3.2-1B with -72.1% loss drop</p>
           </div>
         </div>
 
-        <div class="dossier-grid-specs">
-          <div class="dossier-spec-tile">
-            <span>AVAILABILITY</span>
-            <strong style="color:var(--accent-emerald)">Immediate Joiner (0–15 Days)</strong>
-          </div>
-          <div class="dossier-spec-tile">
-            <span>WORK ARRANGEMENT</span>
-            <strong>Remote (Worldwide) / Hybrid / Relocation</strong>
-          </div>
-          <div class="dossier-spec-tile">
-            <span>CORE GAME ENGINE</span>
-            <strong>Unity 2022/2023 LTS, C#, URP, Shaders</strong>
-          </div>
-          <div class="dossier-spec-tile">
-            <span>AI &amp; MACHINE LEARNING</span>
-            <strong>PyTorch, LoRA / PEFT, Unsloth, LLaMA</strong>
-          </div>
-        </div>
+        <section style="margin-bottom: 24px;">
+          <h3 style="font-family: var(--font-sans); font-size: 18px; font-weight: 800; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 6px; margin-bottom: 12px;">Technical Skills Matrix</h3>
+          <p style="font-size: 14px; line-height: 1.6;">
+            <strong>Game Engines &amp; Languages:</strong> Unity 3D (2020-2023), C#, C++, Python, HLSL/ShaderLab, URP, WebGL.<br />
+            <strong>Gameplay Architecture:</strong> GPU Mesh Instancing, Raycast Vehicle Kinematics, Object Pooling, Spatial Hashing, State Machines, NavMesh.<br />
+            <strong>Deep Learning &amp; AI:</strong> PyTorch, Hugging Face Transformers, LoRA / PEFT, Unsloth QLoRA, Quantization, Synthetic Dataset Engineering.<br />
+            <strong>Optimization:</strong> Mobile Draw-Call Reduction, Memory Profiling, GC Allocation Optimization, Texture Compression (ASTC/ETC2).
+          </p>
+        </section>
 
-        <div style="margin-bottom: 20px;">
-          <h4 style="font-family: var(--font-hud); font-size: 13px; color: #fff; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">Key Accomplishments:</h4>
-          <ul style="color: var(--text-muted); font-size: 13px; line-height: 1.7; padding-left: 20px;">
-            <li><strong>Shipped 2 Live Commercial Mobile Titles on Google Play Store:</strong> <em>CrowdWar: Crowd Runner 3D</em> (150+ crowd GPU instancing) and <em>Car Parking: Real Drive 3D</em> (custom WheelCollider kinematics).</li>
-            <li><strong>Trained &amp; Fine-Tuned Nexus AI Model:</strong> LLaMA-3.2-1B-Instruct fine-tuned using LoRA/PEFT with <strong>-72.1% loss reduction</strong> (1.48 ➔ 0.41) and 94.8% domain knowledge mastery.</li>
-            <li><strong>Zero Allocation Mobile Gameplay:</strong> Engineered generic object pooling, optimized draw calls under 35, and locked 60 FPS on Android.</li>
-          </ul>
-        </div>
-
-        <div style="display: flex; gap: 12px; margin-top: 24px;">
-          <a class="cyber-btn cyber-btn-primary" style="flex: 1;" href="mailto:rishivagadiya@gmail.com?subject=Interview%20Invitation%20for%20Rishi%20Vagadiya">
-            <span>SCHEDULE QUICK SCREEN ↗</span>
-          </a>
-          <button class="cyber-btn cyber-btn-outline" type="button" data-copy-contact>
-            <span>COPY CONTACT INFO</span>
-          </button>
-        </div>
+        <section style="margin-bottom: 20px;">
+          <h3 style="font-family: var(--font-sans); font-size: 18px; font-weight: 800; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 6px; margin-bottom: 12px;">Published Games Record</h3>
+          <div style="margin-bottom: 14px;">
+            <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 15px;">
+              <span>CrowdWar: Crowd Runner 3D</span>
+              <span>Google Play (Klynix Games)</span>
+            </div>
+            <p style="font-size: 13px; color: var(--color-ink-soft);">150+ GPU instanced characters, multiplier collision gates, 60 FPS mobile lock. <a href="https://play.google.com/store/apps/details?id=com.Klynix.CrowdWar" target="_blank">Google Play Link ↗</a></p>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 15px;">
+              <span>Car Parking: Real Drive 3D</span>
+              <span>Google Play (Klynix Games)</span>
+            </div>
+            <p style="font-size: 13px; color: var(--color-ink-soft);">Custom mathematical Raycast WheelCollider physics, Ackermann steering, 1st-person cockpit view. <a href="https://play.google.com/store/apps/details?id=com.Klynix.CarParking" target="_blank">Google Play Link ↗</a></p>
+          </div>
+        </section>
       </div>
     </div>
 
     <!-- =====================================================================
-         MODAL 2: PLAY STORE PHONE SCANNABLE QR CODE MODAL
+         MODAL 2: NEXUS AI CLIENT-SIDE CHAT MODAL
          ===================================================================== -->
-    <div class="cyber-modal-backdrop" id="qr-modal" role="dialog" aria-modal="true" aria-labelledby="qr-heading">
-      <div class="cyber-modal-box" style="text-align: center;">
-        <div style="display: flex; justify-content: flex-end; margin-bottom: 4px;">
-          <button class="modal-close-icon-btn" type="button" data-close-modal aria-label="Close QR Modal">✕</button>
-        </div>
+    <div class="vox-modal-backdrop" id="modal-chat" role="dialog" aria-modal="true" aria-labelledby="chat-modal-title">
+      <div class="vox-modal-dialog" style="max-width: 680px; padding: 24px;">
+        <button class="vox-modal-close" type="button" aria-label="Close Chat" data-close-modal>✕</button>
 
-        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-blue);">SCAN WITH MOBILE CAMERA</span>
-        <h3 id="qr-game-title" style="font-family: var(--font-display); font-size: 19px; color: #fff; margin: 8px 0 16px;">Game Title</h3>
-
-        <div class="qr-container">
-          <div class="qr-code-frame" id="qr-code-svg-slot">
-            <!-- Scannable SVG QR Code generated dynamically via JavaScript -->
-          </div>
-          <p style="color: var(--text-muted); font-size: 13px; max-width: 380px;">
-            Point your Android phone camera at the screen to open the live Google Play Store listing immediately.
+        <div style="border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 12px; margin-bottom: 16px;">
+          <h2 id="chat-modal-title" style="font-family: var(--font-serif); font-size: 28px; line-height: 1;">Nexus AI Neural Assistant</h2>
+          <p style="font-family: var(--font-mono); font-size: 11px; color: var(--color-ink-soft); margin-top: 4px;">
+            Fine-tuned LLaMA-3.2-1B-Instruct model engine · Instant studio Q&amp;A
           </p>
         </div>
 
-        <div style="margin-top: 14px;">
-          <a class="cyber-btn cyber-btn-primary" id="qr-direct-link" href="#" target="_blank" rel="noopener noreferrer">
-            <span>OPEN DIRECT GOOGLE PLAY LINK ↗</span>
-          </a>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px;">
+          <button class="vox-btn-action vox-btn-secondary chat-quick-tag" type="button" style="font-size: 10px; padding: 4px 8px;">"Why hire Rishi?"</button>
+          <button class="vox-btn-action vox-btn-secondary chat-quick-tag" type="button" style="font-size: 10px; padding: 4px 8px;">"Explain CrowdWar 150+ GPU instancing"</button>
+          <button class="vox-btn-action vox-btn-secondary chat-quick-tag" type="button" style="font-size: 10px; padding: 4px 8px;">"Explain Car Parking physics"</button>
+          <button class="vox-btn-action vox-btn-secondary chat-quick-tag" type="button" style="font-size: 10px; padding: 4px 8px;">"Explain LoRA loss drop"</button>
         </div>
+
+        <div id="chat-messages" style="height: 320px; overflow-y: auto; background: #f8fafc; border-radius: 8px; padding: 14px; border: 1px solid rgba(0,0,0,0.08); margin-bottom: 14px; display: flex; flex-direction: column; gap: 10px;">
+          <div class="vox-chat-bubble bubble-ai" style="background: #fff; padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+            <strong style="font-family: var(--font-mono); font-size: 10px; color: var(--color-tech); text-transform: uppercase;">NEXUS AI</strong>
+            <p style="font-size: 14px; margin-top: 4px; line-height: 1.45;">
+              Hello! I am Nexus AI, fine-tuned on Rishi Vagadiya's code, physics systems, and architectural experience. Ask me anything about his published games, GPU optimization, or neural training!
+            </p>
+          </div>
+        </div>
+
+        <form id="chat-form" style="display: flex; gap: 8px;">
+          <input type="text" id="chat-user-input" placeholder="Ask about Rishi's games, C# physics, or AI models..." style="flex: 1; padding: 10px 14px; border: 1px solid rgba(0,0,0,0.2); border-radius: 6px; font-family: var(--font-sans); font-size: 14px; outline: none;" required />
+          <button class="vox-btn-action" type="submit">
+            <span>SEND</span>
+          </button>
+        </form>
       </div>
     </div>
 
     <!-- =====================================================================
-         MODAL 3: FULL-RESOLUTION SCREENSHOT & REPORT LIGHTBOX
+         MODAL 3: LIGHTBOX MODAL (HIGH-RES SCREENSHOT ZOOM)
          ===================================================================== -->
-    <div class="cyber-modal-backdrop" id="lightbox-modal" role="dialog" aria-modal="true" aria-label="Screenshot Lightbox Viewer">
-      <div class="cyber-modal-box">
-        <div style="display: flex; justify-content: flex-end; margin-bottom: 8px;">
-          <button class="modal-close-icon-btn" type="button" data-close-modal aria-label="Close Lightbox">✕</button>
-        </div>
-        <img id="lightbox-image" src="" alt="Enlarged screenshot preview" />
-        <p id="lightbox-caption" style="margin-top: 12px; font-family: var(--font-hud); font-size: 13px; color: var(--accent-blue); text-align: center;"></p>
+    <div class="vox-modal-backdrop" id="modal-lightbox" role="dialog" aria-modal="true">
+      <div class="vox-modal-dialog lightbox-dialog">
+        <button class="vox-modal-close" type="button" aria-label="Close Lightbox" data-close-modal style="position: fixed; top: 20px; right: 25px; background: rgba(255,255,255,0.9);">✕</button>
+        <img id="lightbox-img" class="lightbox-frame" src="" alt="High-res preview" />
+        <p id="lightbox-cap" class="lightbox-caption"></p>
       </div>
     </div>
-
-    <!-- Toast Notification Element -->
-    <div class="toast-notification" id="cyber-toast" role="status" aria-live="polite"></div>
   </body>
 </html>
