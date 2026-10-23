@@ -189,7 +189,10 @@
                     Architected high-density runner mechanics with 150+ simultaneous crowd clones using GPU mesh instancing, dynamic multiplier collision gates, and spatial hash collision avoidance at 60 FPS.
                   </p>
                   <div class="panel-actions">
-                    <a class="vox-btn-action" href="https://play.google.com/store/apps/details?id=com.Klynix.CrowdWar" target="_blank" rel="noopener noreferrer">
+                    <button class="vox-btn-action vox-btn-tech" type="button" data-open-webgl="crowdwar">
+                      <span>▶ PLAY WEBGL</span>
+                    </button>
+                    <a class="vox-btn-action" href="https://play.google.com/store/apps/details?id=com.Zoozo.CrowdWar" target="_blank" rel="noopener noreferrer">
                       <img src="vox/logos/Glossy Google Play Triangle Icon.png" alt="" class="vox-btn-icon" />
                       <span>GET ON GOOGLE PLAY ↗</span>
                     </a>
@@ -221,7 +224,10 @@
                     Built realistic vehicle handling from scratch using custom Raycast WheelColliders, Ackermann steering geometry, non-linear tire friction curves, and an authentic 1st-person interior cockpit view.
                   </p>
                   <div class="panel-actions">
-                    <a class="vox-btn-action" href="https://play.google.com/store/apps/details?id=com.Klynix.CarParking" target="_blank" rel="noopener noreferrer">
+                    <button class="vox-btn-action vox-btn-tech" type="button" data-open-webgl="carparking">
+                      <span>▶ PLAY WEBGL</span>
+                    </button>
+                    <a class="vox-btn-action" href="https://play.google.com/store/apps/details?id=com.Zylos.CarParking" target="_blank" rel="noopener noreferrer">
                       <img src="vox/logos/Glossy Google Play Triangle Icon.png" alt="" class="vox-btn-icon" />
                       <span>GET ON GOOGLE PLAY ↗</span>
                     </a>
@@ -265,7 +271,7 @@
             </div>
 
             <!-- Sticky CTA Button -->
-            <a class="sticky-chapter-cta k k-slap" style="--a: 0.90; --b: 0.94; --c: var(--color-tech); --on: #fff;" href="index-cyber3d.html#games">
+            <a class="sticky-chapter-cta k k-slap" style="--a: 0.90; --b: 0.94; --c: var(--color-tech); --on: #fff;" href="index-cyber3d.html#games" data-open-webgl="crowdwar">
               Open 3D Cyber Mode: Playable In-Browser Canvases →
             </a>
           </div>
@@ -482,7 +488,7 @@
               <a class="end-contact-btn" href="https://github.com/RishiVagadiya" target="_blank" rel="noopener noreferrer">
                 <span>⌥ GitHub: RishiVagadiya</span>
               </a>
-              <a class="end-contact-btn" href="https://play.google.com/store/apps/developer?id=Klynix+Games" target="_blank" rel="noopener noreferrer">
+              <a class="end-contact-btn" href="https://play.google.com/store/apps/dev?id=9041610151558756199" target="_blank" rel="noopener noreferrer">
                 <img src="vox/logos/Glossy Google Play Triangle Icon.png" alt="" class="end-contact-icon" />
                 <span>Google Play: Klynix Games</span>
               </a>
@@ -517,7 +523,7 @@
 
                   <div class="vox-footer-group">
                     <span class="group-title">// REPOSITORIES &amp; APPS</span>
-                    <a href="https://play.google.com/store/apps/developer?id=Klynix+Games" target="_blank" rel="noopener noreferrer">
+                    <a href="https://play.google.com/store/apps/dev?id=9041610151558756199" target="_blank" rel="noopener noreferrer">
                       <img src="vox/logos/Glossy Google Play Triangle Icon.png" alt="" class="footer-mini-icon" />
                       <span>Klynix Games Console ↗</span>
                     </a>
@@ -624,14 +630,14 @@
               <span>CrowdWar: Crowd Runner 3D</span>
               <span>Google Play (Klynix Games)</span>
             </div>
-            <p style="font-size: 13px; color: var(--color-ink-soft);">150+ GPU instanced characters, multiplier collision gates, 60 FPS mobile lock. <a href="https://play.google.com/store/apps/details?id=com.Klynix.CrowdWar" target="_blank">Google Play Link ↗</a></p>
+            <p style="font-size: 13px; color: var(--color-ink-soft);">150+ GPU instanced characters, multiplier collision gates, 60 FPS mobile lock. <a href="https://play.google.com/store/apps/details?id=com.Zoozo.CrowdWar" target="_blank">Google Play Link ↗</a></p>
           </div>
           <div>
             <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 15px;">
               <span>Car Parking: Real Drive 3D</span>
               <span>Google Play (Klynix Games)</span>
             </div>
-            <p style="font-size: 13px; color: var(--color-ink-soft);">Custom mathematical Raycast WheelCollider physics, Ackermann steering, 1st-person cockpit view. <a href="https://play.google.com/store/apps/details?id=com.Klynix.CarParking" target="_blank">Google Play Link ↗</a></p>
+            <p style="font-size: 13px; color: var(--color-ink-soft);">Custom mathematical Raycast WheelCollider physics, Ackermann steering, 1st-person cockpit view. <a href="https://play.google.com/store/apps/details?id=com.Zylos.CarParking" target="_blank">Google Play Link ↗</a></p>
           </div>
         </section>
       </div>
@@ -686,5 +692,42 @@
         <p id="lightbox-cap" class="lightbox-caption"></p>
       </div>
     </div>
+  
+    <!-- =====================================================================
+         MODAL 4: UNITY WEBGL IN-BROWSER GAME PLAYER
+         ===================================================================== -->
+    <div class="vox-modal-backdrop" id="modal-webgl" role="dialog" aria-modal="true" aria-labelledby="webgl-modal-title">
+      <div class="vox-modal-dialog webgl-modal-dialog">
+        <button class="vox-modal-close" type="button" aria-label="Close Game Player" data-close-modal>✕</button>
+
+        <header class="webgl-modal-header">
+          <div class="webgl-modal-title">
+            <span>🎮</span>
+            <span id="webgl-game-title">CrowdWar: Crowd Runner 3D (WebGL)</span>
+          </div>
+          <div class="webgl-tabs-row">
+            <button class="webgl-tab-btn is-active" type="button" data-game="crowdwar">🏃 CrowdWar 3D</button>
+            <button class="webgl-tab-btn" type="button" data-game="carparking">🏎️ Car Parking 3D</button>
+          </div>
+        </header>
+
+        <div class="webgl-viewport-wrapper">
+          <iframe id="webgl-frame" class="webgl-iframe" src="games/crowdwar/index.html" allow="autoplay; fullscreen; gamepad" title="Unity WebGL Game Player"></iframe>
+        </div>
+
+        <footer class="webgl-controls-bar">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#10b981;"></span>
+            <span>UNITY WEBGL ENGINE RUNTIME · 60 FPS</span>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="webgl-ctrl-btn" type="button" id="btn-webgl-fullscreen">⛶ Fullscreen</button>
+            <button class="webgl-ctrl-btn" type="button" id="btn-webgl-reload">↺ Restart Game</button>
+            <a class="webgl-ctrl-btn" href="index-cyber3d.html#games" style="text-decoration:none;">⚡ 3D Cyber View ↗</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+
   </body>
 </html>

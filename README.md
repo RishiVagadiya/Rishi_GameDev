@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://rishivagadiya.github.io/Rishi_GameDev/"><img src="https://img.shields.io/badge/Live_Portfolio-3D_Cyber_Experience-00f0ff?style=for-the-badge&logo=google-chrome&logoColor=black" alt="Live Portfolio" /></a>
-  <a href="https://play.google.com/store/apps/developer?id=Zoozo"><img src="https://img.shields.io/badge/Google_Play-Live_Published_Games-34d399?style=for-the-badge&logo=google-play&logoColor=white" alt="Google Play" /></a>
+  <a href="https://play.google.com/store/apps/dev?id=9041610151558756199"><img src="https://img.shields.io/badge/Google_Play-Live_Published_Games-34d399?style=for-the-badge&logo=google-play&logoColor=white" alt="Google Play" /></a>
   <a href="mailto:rishivagadiya@gmail.com"><img src="https://img.shields.io/badge/Direct_Email-rishivagadiya%40gmail.com-ff007f?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
   <a href="https://wa.me/916352294215"><img src="https://img.shields.io/badge/WhatsApp-+91_6352294215-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp" /></a>
 </p>

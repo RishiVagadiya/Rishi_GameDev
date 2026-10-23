@@ -185,6 +185,62 @@
       });
     });
 
+    // Open WebGL Game Player Modal
+    const webglModal = document.getElementById('modal-webgl');
+    const webglFrame = document.getElementById('webgl-frame');
+    const webglTitle = document.getElementById('webgl-game-title');
+    const tabBtns = document.querySelectorAll('.webgl-tab-btn');
+
+    function switchGame(gameKey) {
+      tabBtns.forEach(b => b.classList.toggle('is-active', b.dataset.game === gameKey));
+      if (webglFrame) {
+        if (gameKey === 'carparking') {
+          webglFrame.src = 'games/carparking/index.html';
+          if (webglTitle) webglTitle.textContent = 'Car Parking: Real Drive 3D (WebGL)';
+        } else {
+          webglFrame.src = 'games/crowdwar/index.html';
+          if (webglTitle) webglTitle.textContent = 'CrowdWar: Crowd Runner 3D (WebGL)';
+        }
+      }
+    }
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        playBlip(750);
+        switchGame(btn.dataset.game);
+      });
+    });
+
+    document.querySelectorAll('[data-open-webgl]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        playBlip(820);
+        const game = btn.getAttribute('data-open-webgl') || 'crowdwar';
+        switchGame(game);
+        if (webglModal) webglModal.classList.add('is-open');
+      });
+    });
+
+    const btnFullscreen = document.getElementById('btn-webgl-fullscreen');
+    if (btnFullscreen && webglFrame) {
+      btnFullscreen.addEventListener('click', () => {
+        if (webglFrame.requestFullscreen) {
+          webglFrame.requestFullscreen();
+        } else if (webglFrame.webkitRequestFullscreen) {
+          webglFrame.webkitRequestFullscreen();
+        }
+      });
+    }
+
+    const btnReload = document.getElementById('btn-webgl-reload');
+    if (btnReload && webglFrame) {
+      btnReload.addEventListener('click', () => {
+        const cur = webglFrame.src;
+        webglFrame.src = '';
+        setTimeout(() => { webglFrame.src = cur; }, 100);
+      });
+    }
+
     // Lightbox for screenshots
     document.querySelectorAll('[data-lightbox-src]').forEach(el => {
       el.addEventListener('click', () => {

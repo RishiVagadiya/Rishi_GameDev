@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>CrowdWar: Crowd Runner 3D - WebGL</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #07090e; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; color: #fff; }
+    #unity-container { width: 100%; height: 100%; position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle at center, #131a2a 0%, #06080e 100%); }
+    #unity-canvas { width: 100%; height: 100%; background: #000; display: none; }
+    .loader-box { text-align: center; max-width: 460px; padding: 30px; border-radius: 12px; background: rgba(18, 24, 38, 0.85); border: 1px solid rgba(0, 240, 255, 0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+    .loader-badge { display: inline-block; font-size: 11px; letter-spacing: 0.1em; color: #00f0ff; background: rgba(0, 240, 255, 0.1); padding: 4px 10px; border-radius: 4px; margin-bottom: 12px; font-weight: 700; text-transform: uppercase; }
+    h1 { font-size: 22px; margin-bottom: 8px; font-weight: 800; letter-spacing: -0.02em; }
+    p { font-size: 13px; color: #94a3b8; line-height: 1.5; margin-bottom: 16px; }
+    .status-pill { font-size: 12px; padding: 8px 14px; border-radius: 6px; background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); display: inline-flex; align-items: center; gap: 8px; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+  </style>
+</head>
+<body>
+  <div id="unity-container">
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+    <div class="loader-box" id="loader-box">
+      <span class="loader-badge">Unity WebGL Container</span>
+      <h1>CrowdWar: Crowd Runner 3D</h1>
+      <p>Container ready for Unity WebGL build files.<br>Drop Unity WebGL build files inside <code>games/crowdwar/</code></p>
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span>Awaiting Unity WebGL Build from Developer</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Unity loader auto-detection script
+    const checkUnity = () => {
+      const loaderScript = document.querySelector('script[src*=".loader.js"]');
+      if (loaderScript || typeof createUnityInstance === 'function') {
+        const box = document.getElementById('loader-box');
+        if (box) box.style.display = 'none';
+        const canvas = document.getElementById('unity-canvas');
+        if (canvas) canvas.style.display = 'block';
+      }
+    };
+    checkUnity();
+  </script>
+</body>
+</html>
